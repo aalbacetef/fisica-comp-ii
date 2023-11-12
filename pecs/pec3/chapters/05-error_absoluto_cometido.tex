@@ -1,0 +1,45 @@
+\section{Problema E - Error absoluto cometido}
+
+\paragraph{Ecuación}
+La antigüedad de la muestra es dada por:
+
+\begin{equation}
+	t = - \ln (N_{14C}) \frac{t_{12}}{\ln 2}
+\end{equation}
+
+y $t = 5730$
+
+
+
+Estime el error absoluto cometido con las aproximaciones obtenidas en los 
+apartados A) y C) y D) en relación a la edad t dada por expresión anterior. 
+
+Realice una discusión sobre los órdenes de magnitud de los errores calculados.
+
+\subsection{Resolución}
+
+\subsubsection{Programación}
+Si usamos la ecuación, vemos que la edad es: $1146.480157$.
+
+Utilizaremos el siguiente código para calcular el error:
+
+\lstinputlisting[language=Python]{../../code/pecs/pec3/ex5.py}
+
+\newpage 
+
+\subsubsection{Resultados}
+
+Con esto tenemos los resultados en la siguiente tabla:
+
+\begin{table}[htbp]
+	\centering
+	\csvreader[
+	tabular=|c|c|c|,
+	table head=\hline \textbf{Polynomial} & \textbf{Age} & \textbf{Error} \\\hline,
+	late after last line=\\\hline,
+	]{data/errors04.csv}{}{\csvlinetotablerow}
+\end{table}
+
+\subsection{Discusión}
+
+Como se puede ver, el error es dos órdenes de magnitud por debajo del valor, lo cual es una aproximación relativamente buena.

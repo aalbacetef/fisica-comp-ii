@@ -1,0 +1,17 @@
+stages:
+  - build
+
+
+build:
+  stage: build
+  image: docker
+  services: [ "docker:dind" ]
+  script:
+    - apk update && apk add make
+    - sed -i 's/RUNNER := podman/RUNNER := docker/' Makefile 
+    - make build-tex-img 
+    - make gen-documents 
+
+  artifacts:
+    paths:
+      - documents/

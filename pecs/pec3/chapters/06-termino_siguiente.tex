@@ -1,0 +1,35 @@
+\section{Problema F - Regla del término siguiente}
+Utilizando la regla del término siguiente estime el error cometido al datar la muestra cuya proporción de Carbono-14 es $0.8705$ con las aproximaciones calculadas en el apartado C) y D).
+
+\subsection{Análisis}
+
+La regla del término siguiente se basa en aproximar el error definiéndolo como la diferencia entre el polinomio de orden $n$ y el polinomio de orden $m = n + 1$.
+
+Básicamente es el valor del término $m = n + 1$.
+
+
+$$ E_{sig}(x)_n = P_{n+1}(x) - P_{n}(x) $$
+
+\subsection{Resolución}
+
+\subsubsection{Programación}
+
+Utilizaremos el siguiente código para calcular el error:
+
+\lstinputlisting[language=Python]{../../code/pecs/pec3/ex6.py}
+
+\newpage 
+
+\subsection{Resolución}
+
+Los errores de cada orden, para el valor de interés $0.8705$ se han calculado:
+
+\begin{table}[htbp]
+	\centering
+	\csvreader[
+	tabular=|c|c|c|,
+	table head=\hline \textbf{Polynomial} & \textbf{Error} \\\hline,
+	late after last line=\\\hline,
+	]{data/errors05.csv}{}{\csvlinetotablerow}
+\end{table}
+

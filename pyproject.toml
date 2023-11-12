@@ -1,0 +1,36 @@
+[tool.poetry]
+name = "fisica-comp-ii"
+version = "0.1.0"
+description = "Proyecto para la clase de Física Computacional II"
+license = "MIT"
+authors = [
+  "Arturo Felipe Albacete Fernández <aalbacetef@gmail.com>",
+]
+packages = [
+  { include = "code" },
+]
+
+[build-system]
+requires = [
+  "poetry-core>=1.2.0",
+]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+matplotlib = "^3.8.1"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.4.3"
+pylint = "^3.0.2"
+black = "^23.11.0"
+pyright = "^1.1.335"
+
+[tool.black]
+target-version = ['py38']
+preview = true
+include =  '\.py$'
+extend-exclude = "tests/([^/]*/)*fixtures/"
+
+[tool.ruff]
+line-length=80

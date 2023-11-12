@@ -1,0 +1,19 @@
+
+# ignorar los archivos generados por tex
+*.log
+*.toc 
+*.aux
+*.pdf
+*.gz
+
+
+# Devenv
+.devenv*
+devenv.local.nix
+
+# direnv
+.direnv
+
+# pre-commit
+.pre-commit-config.yaml
+
