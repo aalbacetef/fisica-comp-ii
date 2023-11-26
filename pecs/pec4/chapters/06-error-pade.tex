@@ -13,3 +13,19 @@ El código que se ha usado en la resolución de este problema está en \ref{code
 	\caption{Error de las aproximaciones de Padé en respecto al ajuste de mínimos cuadrados.}
 	\label{fig:error_abs_pade}
 \end{figure}
+
+\newpage 
+
+\paragraph{Valores}
+
+Los valores son:
+
+\begin{itemize}
+	\item error $t_0 = 1.0 = 2.885144$
+	\item error $t_0 = 1.5 = 0.938547$
+	\item error $t_0 = 2.0 = 2.486423$
+\end{itemize}
+
+\subsection{Discusión}
+
+Como se puede ver en la gráfica, es bastante importante asegurarnos de realizar la aproximación de Padé centrada en el intervalo de interés. Si sólo queremos calcular una aproximación, podemos ver que tomando el $t_0$ más céntrico ($1.5$), da un error bastante aceptable (una orden de magnitud de diferencia!).

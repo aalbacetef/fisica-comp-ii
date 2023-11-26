@@ -1,27 +1,24 @@
 from math import exp, sin
-from typing import Callable, TypeAlias
+from typing import Callable
 
 from code.methods.linalg import matrix_multiplication, solve, transpose, zeros
 from code.methods.types import Matrix, Vector
-from code.pecs.pec4.data import ALPHA, BETA, datos, f_k
-
-# fn( param_list, x_k )
-Func: TypeAlias = Callable[[list[float], float], float]
+from code.pecs.pec4.data import ALPHA, datos, r_k
 
 
-def partial_alpha_k(params: list[float], x_k: float) -> float:
+def partial_alpha_k(params: Vector, x_k: float) -> float:
     alpha = params[ALPHA]
     return x_k * exp(-1.0 * alpha * x_k)
 
 
-def partial_beta_k(params: list[float], x_k: float) -> float:
+def partial_beta_k(params: Vector, x_k: float) -> float:
     return -1.0 * sin(x_k)
 
 
-def jacobian(xvals: list[float]):
+def jacobian(xvals: Vector) -> Callable[[Vector], Matrix]:
     partials = [partial_alpha_k, partial_beta_k]
 
-    def inner(params: list[float]):
+    def inner(params: Vector) -> Matrix:
         nrows = len(xvals)
         ncols = len(params)
         J = zeros(nrows, ncols)
@@ -35,15 +32,7 @@ def jacobian(xvals: list[float]):
     return inner
 
 
-def r_k(xvals: list[float], yvals: list[float]):
-    def inner(params: list[float], k: int):
-        y_k = yvals[k]
-        return y_k - f_k(params, xvals[k])
-
-    return inner
-
-
-def step(J: Matrix, params: list[float], xvals, yvals) -> Vector:
+def step(J: Matrix, params: Vector, xvals: Vector, yvals: Vector) -> Vector:
     J_T = transpose(J)
     r_fn = r_k(xvals, yvals)
     r = [[r_fn(params, k)] for k in range(len(xvals))]
@@ -55,7 +44,7 @@ def step(J: Matrix, params: list[float], xvals, yvals) -> Vector:
     return solve(A, b_vec)
 
 
-def compute_params(xvals, yvals):
+def compute_params(xvals: Vector, yvals: Vector) -> Vector:
     params_k = [0.0, 0.0]
 
     J_fn = jacobian(xvals)

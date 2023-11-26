@@ -1,21 +1,17 @@
 from math import exp, sin
 
-from code.pecs.pec4.data import ALPHA, BETA, datos, f_k
+from code.methods.types import FuncVectorK, Vector
+from code.pecs.pec4.data import ALPHA, datos, r_k
 from code.pecs.pec4.ex3 import compute_params
 
 
-def r_k(xvals: list[float], yvals: list[float]):
-    def inner(params: list[float], k: int):
-        y_k = yvals[k]
-        return y_k - f_k(params, xvals[k])
-
-    return inner
-
-
-def second_partial_alpha(r_fn, xvals, params):
+def second_partial_alpha(
+    r_fn: FuncVectorK, xvals: Vector, params: Vector
+) -> float:
     alpha = params[ALPHA]
     s = 0.0
-    for k in range(len(xvals)):
+    n = len(xvals)
+    for k in range(n):
         x_k = xvals[k]
         c0 = exp(-1.0 * alpha * x_k)
         c1 = x_k * x_k
@@ -28,7 +24,7 @@ def second_partial_alpha(r_fn, xvals, params):
     return -2.0 * s
 
 
-def second_partial_beta(xvals):
+def second_partial_beta(xvals: Vector) -> float:
     s = 0.0
     for x_k in xvals:
         v = sin(x_k)
