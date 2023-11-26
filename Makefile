@@ -1,6 +1,6 @@
 
 
-.PHONY: build-imgs build-tex-img build-py-img run-dev run-tex gen-documents clean pec3 
+.PHONY: build-imgs build-tex-img build-py-img run-dev run-tex gen-documents clean pec3 clean-pycache
 
 ## si usas docker, cambiar esto a "docker"
 RUNNER := podman 
@@ -63,3 +63,6 @@ run-pec3:
 	poetry run python -m code.pecs.pec3.ex5
 	poetry run python -m code.pecs.pec3.ex6
 	poetry run python -m code.pecs.pec3.ex7
+
+clean-pycache:
+	find . -type d -name '__pycache__' | xargs -I W rm -r W

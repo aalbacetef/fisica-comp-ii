@@ -1,0 +1,89 @@
+\documentclass{article}
+
+\usepackage{listings}
+\usepackage{color}
+\usepackage{courier}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{mleftright}
+\usepackage{csvsimple}
+
+\newcommand{\lnn}[1]{%
+	\ln\left(#1\right)%
+}
+
+\newcommand{\lnb}[1]{%
+	\ln\mleft(#1\mright)%
+}
+
+
+\title{PEC III - Física Computacional II}
+\date{26-11-2023}
+\author{Arturo Felipe Albacete Fernández}
+
+
+
+\lstset{
+	basicstyle=\footnotesize\ttfamily,
+	breaklines=true,
+	frame=tb,
+	tabsize=4,
+	columns=fixed,
+	showstringspaces=false,
+	showtabs=false,
+	keepspaces,
+	commentstyle=\color{red},
+	keywordstyle=\color{blue}
+}
+\lstset{frame=single}
+
+
+\begin{document}
+
+% titulo
+\maketitle
+\newpage
+
+% TOC
+\tableofcontents
+\newpage
+
+% intro
+\input{chapters/00-intro.tex}
+\newpage
+
+% ejercicio A
+\input{chapters/01-aproximante-pade.tex}
+\newpage
+
+% ejercicio B
+\input{chapters/02-minimos-cuadrados.tex}
+\newpage
+
+% ejercicio C
+\input{chapters/03-metodo-newton.tex}
+\newpage
+
+% ejercicio D
+\input{chapters/04-error-cuadratico-minimo.tex}
+\newpage
+
+% ejercicio E
+\input{chapters/05-comparacion-aproximaciones.tex}
+\newpage 
+
+% ejercicio F
+\input{chapters/06-error-pade.tex}
+\newpage 
+
+% ejercicio G
+\input{chapters/07-taylor.tex}
+\newpage
+
+\input{chapters/appendix.tex}
+\newpage
+
+\end{document}

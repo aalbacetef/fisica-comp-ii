@@ -1,0 +1,72 @@
+\section{Mínimos cuadrados}
+
+\subsection{Problema}
+
+Estamos interesados en ajustar esos datos experimentales al modelo teórico
+dado por $D(t)$. Utilice el método de los mínimos cuadrados para obtener el sistema
+de ecuaciones que deben satisfacer los parámetros $\alpha$ y $\beta$.
+
+\subsection{Análisis}
+
+El ajuste por mínimos cuadrados, en resumen, se trata de buscar los parámetros que minimicen suma cuadrada de los residuos. 
+
+Si definimos:
+
+\begin{equation}
+	r_k = y_k - f(x_k)
+\end{equation}
+
+\begin{equation}
+	\text{SSR}(\alpha, \beta) = \sum_{k} r_k^2 
+\end{equation}
+
+Buscamos parámetros $\alpha$ y $\beta$ que minimicen el SSR. Esto es:
+
+\begin{equation}
+	\partial_\alpha \text{SSR} = 0
+\end{equation}
+\begin{equation}
+	\partial_\beta \text{SSR} = 0
+\end{equation}
+
+Expandiendo:
+
+\begin{align*}
+	\partial_\alpha \text{SSR} &= \partial_\alpha \sum_{k} r_k^2 \\
+	&= \sum_{k} \partial_\alpha r_k^2 \\
+	&= 2 \sum_{k} r_k  \partial_\alpha r_k 
+\end{align*} 
+
+\begin{align*}
+	\partial_\beta \text{SSR} &= \partial_\beta \sum_{k} r_k^2 \\
+	&= \sum_{k} \partial_\beta r_k^2 \\
+	&= 2 \sum_{k} r_k \partial_\beta r_k 
+\end{align*} 
+
+y las derivadas parciales son, dado que $\partial_\theta r_k = - \partial_\theta f(x_k)$:
+
+\begin{equation}
+	\partial_\alpha f(x_k) = \partial_\alpha (e^{-\alpha x_k} + \beta \sin(x_k)) \\ 
+	= -x_k e^{-\alpha x_k}
+\end{equation}
+\begin{equation}
+	\partial_\beta f(x_k) = \partial_\beta (e^{-\alpha x_k} + \beta \sin(x_k)) \\ 
+	= \sin(x_k)
+\end{equation}
+
+Asi que:
+
+\begin{align*}
+	\partial_\alpha \text{SSR} &= 
+	2 \sum_{k} r_k(-\partial_\alpha f(x_k)) \\
+	&= 2 \sum_{k} r_k(x_k e^{-\alpha x_k}) \\
+	&= 0
+\end{align*}
+
+\begin{align*}
+	\partial_\beta \text{SSR} &= 
+	2 \sum_{k}r_k(-\partial_\beta f(x_k)) \\
+	&= 2 \sum_{k} r_k (-\sin(x_k)) \\
+	&= 0
+\end{align*}
+

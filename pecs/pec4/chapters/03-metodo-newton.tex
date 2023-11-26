@@ -1,0 +1,80 @@
+\section{Método de Newton}
+
+\subsection{Problema}
+
+Resuelva ese sistema de ecuaciones utilizando el método de Newton partiendo del punto $(\alpha_0 , \beta_0) = (0,0)$ con una precisión para cada una de las variables de $10^{-8}$.
+
+\subsection{Análisis}
+
+\paragraph{Residuos}
+
+Primero empezaremos generalizando el resultado anterior. 
+Tomemos el conjunto de parámetros como $ P = \{\alpha, \beta\}$, lo cual da que:
+
+\begin{align*}
+	\partial_{P_j} \text{SSR} 
+	&= 2 \sum_{k} r_k \frac{\partial r_k}{\partial P_j} \\
+	&= 2 \sum_{k} - r_k \frac{ \partial f(x_k)}{\partial P_j} \\
+\end{align*}
+
+donde $P_j$ $\epsilon$ P $= \{\alpha, \beta\}$.
+
+\paragraph{Iteración}
+
+El paso fundamental del algoritmo es:
+
+\begin{equation}
+	\textbf{J}^T\textbf{J} \Delta \text{P} = \textbf{J}^T  \textbf{r}
+\end{equation}
+
+donde:
+
+\begin{equation*}
+	\textbf{r} = [r_1 \dots r_n ]
+\end{equation*}
+
+\paragraph{Jacobiano}
+
+Ahora pasamos a construir el Jacobiano, dado por:
+
+\begin{equation}
+	J_{ij} = - \frac{\partial r_i}{\partial P_j} = \frac{\partial f(x_i)}{\partial P_j} 
+\end{equation}
+
+
+Lo cual da que:
+
+\begin{equation}
+	\frac{ \partial \text{SSR} }{ \partial P_j } = -2 \sum_i r_i J_{ij}
+\end{equation}
+
+
+\subsection{Resolución}
+
+\paragraph{Algoritmo}
+
+El algoritmo para resolver el sistema es Gauss-Newton. Si vemos el apartado anterior, podemos replantear:
+
+\begin{equation*}
+	\textbf{J}^T\textbf{J} \Delta \text{P} = \textbf{J}^T  \textbf{r}
+\end{equation*}
+
+con:
+
+\begin{align*}
+	\textbf{A} \Delta P &= \textbf{b} \\
+	\textbf{A} &= \textbf{J}^T\textbf{J} \\
+	\textbf{b} &= \textbf{J}^T  \textbf{r}
+\end{align*}
+
+\begin{itemize}
+	\item \text{Iniciamos con los parámetros} = [0.0, 0.0]
+	\item \text{Calculamos el cambio de parámetro.}
+	\item \text{Si el cambio es menor que el límite, paramos.} 
+\end{itemize}
+
+\paragraph{Valor} Después de ejecutar el código (que se puede ver en \ref{code:ex3}), nos da que los parámetros que minimizan el error son:
+
+$$\alpha = 0.42952981942913554$$
+
+$$\beta = -1.9842186638017174$$

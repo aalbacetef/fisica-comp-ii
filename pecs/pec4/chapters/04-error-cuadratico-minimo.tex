@@ -1,0 +1,67 @@
+\section{Error del método de Newton}
+
+\subsection{Problema}
+
+Demuestre que la solución del apartado anterior, en efecto, genera un error cuadrático mínimo.
+
+\subsection{Análisis}
+
+Para demostrar esto, podemos hacer utilizar la prueba de la segunda derivada. 
+
+Si el punto es un mínimo, las segundas parciales derivadas deberían ser mayores que cero.
+
+\begin{equation*}
+	\frac{\partial^2 \text{SRR}}{\partial^2 P_j } > 0
+\end{equation*}
+
+o bien:
+
+$$
+	\frac{\partial^2 \text{SRR}}{\partial^2 \alpha } > 0
+$$
+
+$$
+\frac{\partial^2 \text{SRR}}{\partial^2 \beta } > 0
+$$
+
+\subsection{Resolución}
+
+Expandamos la ecuación anterior:
+
+\begin{align*}
+	\frac{\partial^2 \text{SRR}}{\partial^2 P_j } &=
+	\partial_{P_j} (-2 \sum_k r_k \partial_{P_j} f(x_k)) \\
+	&= -2 \sum_k 
+		[ r_k \partial^2 f(x_k) - (\partial_{P_j} f(x_k))^2 ]
+\end{align*}
+
+Tenemos que:
+
+$$
+\frac{\partial^2 f(x_k) }{\partial^2 \alpha} = x_k^2 e^{-\alpha x_k}
+$$
+$$
+\frac{\partial^2 f(x_k) }{\partial^2 \beta} = 0
+$$
+
+Y podemos ver que las segundas derivadas para cada parámetro son:
+
+
+\begin{align*}
+	\frac{\partial^2 \text{SRR}}{\partial^2 \alpha } &=
+	-2 \sum_{k} [ r_k  x_k^2 e^{-\alpha x_k} -  x_k^2 e^{-2\alpha x_k}] \\
+	\frac{\partial^2 \text{SRR}}{\partial^2 \beta} &=
+	-2 \sum_{k} -\sin^2(x_k) = 2 \sum_{k} \sin^2(x_k)
+\end{align*}
+
+\paragraph{Valores}
+
+Después de ejecutar el código (que se puede ver en \ref{code:ex4}), vemos que las segundas derivadas parciales dan:
+
+$$ 
+\frac{\partial^2 \text{SRR}}{\partial^2 \alpha} = 6.654278868164993 $$
+$$
+	\frac{\partial^2 \text{SRR}}{\partial^2 \beta} = 6.275648176029468
+$$
+
+Lo que confirma que hemos encontrado un mínimo.
