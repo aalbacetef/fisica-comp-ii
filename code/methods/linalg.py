@@ -43,7 +43,7 @@ def zeros(m: int, n: int) -> Matrix:
     """Creates a zero matrix of size (m, n)."""
     C = []
 
-    for i in range(m):
+    for _ in range(m):
         row = [0 for _ in range(n)]
         C.append(row)
 
@@ -53,10 +53,10 @@ def zeros(m: int, n: int) -> Matrix:
 def identity(m: int, n: int) -> Matrix:
     """Creates an identity matrix of size (m, n)."""
     C = []
-
     for i in range(m):
         row = [0 for _ in range(n)]
-        row[i] = 1
+        if i < n:
+            row[i] = 1
         C.append(row)
 
     return C
@@ -91,7 +91,7 @@ def matrix_multiplication(A: Matrix, B: Matrix) -> Matrix:
 def transpose(A: Matrix) -> Matrix:
     """Returns the transpose of A."""
     [m, n] = dim(A)
-    T = zeros(m, n)
+    T = zeros(n, m)
 
     for i in range(m):
         for j in range(n):
@@ -165,30 +165,50 @@ def solve(A: Matrix, b: Vector) -> Vector:
 
 
 if __name__ == "__main__":
-    A = [
-        [1.0, 2.0, 3.0],
-        [2.0, 1.0, 3.0],
-        [3.0, 2.0, 1.0],
-    ]
-
-    [L, U] = lu_decomposition(A, True)
-    print("L: ")
-    for row in L:
-        print(row)
-    print("U: ")
-    for row in U:
-        print(row)
-
-    print("C:")
-    C = matrix_multiplication(L, U)
-    for row in C:
-        print(row)
-
-    A = [
-        [2.0, 3.0],
-        [1.0, 1.0],
-    ]
-    b = [-27.0, -8.5]
+    # A = [
+    #     [1.0, 2.0, 3.0],
+    #     [2.0, 1.0, 3.0],
+    #     [3.0, 2.0, 1.0],
+    # ]
+    #
+    # [L, U] = lu_decomposition(A, True)
+    # print("L: ")
+    # for row in L:
+    #     print(row)
+    # print("U: ")
+    # for row in U:
+    #     print(row)
+    #
+    # print("C:")
+    # C = matrix_multiplication(L, U)
+    # for row in C:
+    #     print(row)
+    #
+    # A = [
+    #     [2.0, 3.0],
+    #     [1.0, 1.0],
+    # ]
+    # b = [-27.0, -8.5]
+    # x = solve(A, b)
+    # print("X: ")
+    # print(x)
+    # A = [[1.0 / 6.0, 0.5], [1.0 / 24.0, 1.0 / 6.0]]
+    # b = [-1.0 / 24.0, -1.0 / 120.0]
+    A = [[-1.0 / 6.0, 0], [0, -1.0 / 6.0]]
+    b = [0.0, -1.0 / 120.0]
     x = solve(A, b)
-    print("X: ")
+    print("solved: ")
     print(x)
+    [nrows, ncols] = dim(A)
+    print("dims(A) = (%d, %d)" % (nrows, ncols))
+    _b = [[b[k]] for k in range(len(b))]
+    print(dim(_b))
+    for row in A:
+        print(row)
+    print("b")
+    for row in _b:
+        print(row)
+
+    B = matrix_multiplication(A, _b)
+    for row in B:
+        print(row)
