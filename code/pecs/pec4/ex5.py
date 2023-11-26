@@ -70,7 +70,7 @@ if __name__ == "__main__":
 
     plt.figure(1)
     plt.plot(xvals, err_pade, label="residue pade")
-    plt.plot(xvals, err_least_squares, label="residueleast squares")
+    plt.plot(xvals, err_least_squares, label="residue least squares")
     plt.legend()
     plt.savefig("pecs/pec4/figures/errores_quad_approx.png")
     plt.close()
