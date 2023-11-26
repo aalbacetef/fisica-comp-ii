@@ -1,0 +1,150 @@
+\section{Aproximante de Padé}
+
+
+\subsection{Problema}
+
+Sea la función no lineal definida en términos de dos parámetros $\alpha$ y $\beta$
+
+\begin{equation}
+	D(t) = e^{-\alpha t} + \beta sin(t) 
+\end{equation}
+
+Calcule el aproximante de Padé de la función $D(t)$ alrededor de $t_0$, con grados dos en el numerador y uno en el denominador. Se recomienda escribir el aproximante como:
+
+$$
+\frac{a_0 + a_1 ( t - t_0) + a_2(t - t_0)^2 }{ 1 + b_1(t - t_0) }
+$$
+
+
+\subsection{Análisis}
+
+
+\subsubsection{Expansiones de Taylor y MacLaurin}
+
+El aproximante de Padé se puede considerar como una extensión de la expansión de Taylor. 
+
+La expansión de Taylor consiste en construir una serie de potencias en grado $n$ tal que:
+
+$$
+T_n^{\alpha}(x) = \sum_{k = 0}^{n} a_k (x - \alpha)^k 
+$$
+
+Y la serie de MacLaurin es la expansion $\alpha = 0$, asi que:
+
+$$
+T_n(x) = \sum_{k = 0}^{n} a_k x^k 
+$$
+
+
+Esto es, entonces, una aproximación por polinomios. 
+
+
+\subsubsection{Una mejor aproximación}
+
+Una mejor aproximación se podría obtener si expandimos la clase de funciones a las funciones racionales:
+
+$$
+G_{[n/m]} = \frac{P_n(x)}{Q_m(x)}
+$$
+
+\newpage 
+
+La diferencia entre la aproximación y la función aproximada (el error) es:
+
+
+\begin{align*}
+	err(x) &= f(x) - \frac{P_n(x)}{Q_m(x)}  \\
+	\lim_{\sigma \to \infty} T_{\sigma}(x) &= f(x) \\
+	\\
+	err(x) 
+	&= \lim_{\sigma \to \infty} T_{\sigma}(x) - \frac{P_n(x)}{Q_m(x)}   	
+\end{align*}
+
+Definamos $N = m + n $:
+
+\begin{align*}
+	err(x, \alpha) 
+	&= \lim_{\sigma \to \infty} T_{\sigma}(x) - \frac{P_n(x)}{Q_m(x)}	\\
+	&= \frac{ Q_m(x) \displaystyle{\lim_{\sigma \to \infty} T_{\sigma}(x)} - P_n(x)}{Q_m(x)} \\
+\end{align*}
+
+
+Y si queremos $err(x, N) = 0$, necesitamos:
+
+$$ Q_m(x)\lim_{\sigma \to \infty} T_{\sigma}(x) = P_n(x) $$
+
+\begin{align*}
+	P_n(x) 
+	&= \sum_{k = 0}^{n} p_k x^k \\
+	Q_m(x) 
+	&= \sum_{k = 0}^{m} q_k x^k 
+\end{align*}
+
+
+
+\subsubsection{Coeficientes}
+
+El problema se puede reducir a un sistemas de ecuaciones:
+
+\begin{align*}
+	&q_0 = 1 \\
+	&p_0 = a_0 \\
+	&p_1 = a_1 + a_0 q_1 \\
+	&p_2 = a_2 + a_0 q_2 + a_1 q_1 \\
+	&p_3 = a_3 + a_0 q_3 + a_1 q_2 + a_2 q_1\\
+	&\dots   \\
+	&p_k = \sum_{i=0}^{k} a_i q_{k-i}
+\end{align*}
+
+
+\subsection{Resolución}
+
+En nuestro caso, $n = 2$ y $m = 1$, por ende $N = 3$ y buscamos resolver:
+
+\begin{align*}
+	&p_0 = a_0 \\
+	&p_1 = a_1 + a_0 q_1 \\
+	&p_2 = a_2 + a_1 q_1 \\
+	&0 ~ = a_3 + a_2 q_1
+\end{align*}
+
+
+Esto nos da que:
+\begin{align*}
+	&q_0 = 1 ~ &(\textit{por def.}) \\
+	&q_1 = - \frac{a_3}{a_2} \\
+	&p_0 = a_0 \\
+	&p_1 = a_1 - \frac{ a_0 a_3 }{ a_2 } \\
+	&p_2 = a_2 - \frac{ a_1 a_3 }{a_2}
+\end{align*}
+
+
+
+Dado que la función por aproximar es:
+
+$$ D(t) = e^{-\alpha t} + \beta sin(t) $$
+
+Los primeros coeficientes de la serie de Taylor son:
+
+\begin{align*}
+	&a_0 = D(t=t_0)  = e^{-\alpha t_0} + \beta \sin(t_0) \\
+	&a_1 = \frac{\partial_t D(t=t_0)}{1!} 
+	= -\alpha e^{-\alpha t_0} + \beta \cos(t_0) \\
+	&a_2 = \frac{\partial_t^2 D(t=t_0)}{2!}
+	= \frac{\alpha^2 e^{-\alpha t_0} - \beta \sin(t_0)}{2}
+	 \\
+	&a_3 = \frac{\partial_t^3 D(t=t_0)}{3!}
+	= \frac{-\alpha^3 e^{-\alpha t0} - \beta \cos(t_0)}{6}	
+\end{align*}
+
+y el aproximante es (con $ \Delta t = t - t0$): 
+$$
+\frac{p_0 + p_1 \Delta t + p_2 (\Delta t)^2} { 1 + q_1 \Delta t } = \\
+\frac{
+	a_0 + (a_1 - \frac{ a_0 a_3 }{ a_2 })(\Delta t) + (a_2 - \frac{ a_1 a_3 }{a_2})(\Delta t)^2
+}{
+1 - \frac{a_3}{a_2}(\Delta t)
+} 
+$$
+
+
