@@ -54,7 +54,7 @@ pec3:
 
 pec4:
 	mkdir -p documents/pec4 
-	cd ./pecs/pec3 && \
+	cd ./pecs/pec4 && \
 		pdflatex \
 		--synctex=1 --interaction=nonstopmode \
 		--output-directory=../../documents/pec4 \
