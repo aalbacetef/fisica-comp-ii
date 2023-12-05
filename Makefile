@@ -37,6 +37,7 @@ gen-documents: build-tex-img clean
 		-v $(shell realpath documents):/project/documents \
 		$(TAG_TEX) \
 		make pec3
+	@echo "generating pec4"
 	@$(RUNNER) run \
 		--rm \
 		-v $(shell realpath documents):/project/documents \
