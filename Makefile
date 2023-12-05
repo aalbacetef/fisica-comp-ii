@@ -51,10 +51,19 @@ pec3:
 		--synctex=1 --interaction=nonstopmode \
 		--output-directory=../../documents/pec3 \
 		pec3.tex 
-
+	cd ./pecs/pec3 && \
+		pdflatex \
+		--synctex=1 --interaction=nonstopmode \
+		--output-directory=../../documents/pec3 \
+		pec3.tex 
 
 pec4:
 	mkdir -p documents/pec4 
+	cd ./pecs/pec4 && \
+		pdflatex \
+		--synctex=1 --interaction=nonstopmode \
+		--output-directory=../../documents/pec4 \
+		pec4.tex 
 	cd ./pecs/pec4 && \
 		pdflatex \
 		--synctex=1 --interaction=nonstopmode \
