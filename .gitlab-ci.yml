@@ -12,10 +12,13 @@ build:
     - sed -i 's/RUNNER := podman/RUNNER := docker/' Makefile 
     - make build-tex-img 
     - make gen-documents 
-
+  after_script:
+    - echo "JOB_URL=$CI_JOB_URL" >> job.env
   artifacts:
     paths:
       - documents/
+  reports:
+    dotenv: job.env 
 
 do_release:
   stage: release
@@ -36,4 +39,4 @@ do_release:
     assets:
       links:
         - name: "$TAG.pdf"
-          url: "https://gitlab.com/aalbacetef/fisica-comp-ii/-/jobs/$JOB_ID/artifacts/file/documents/$TAG/$TAG.pdf"
+          url: "$JOB_URL/artifacts/file/documents/$TAG/$TAG.pdf"
