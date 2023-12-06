@@ -10,9 +10,7 @@ RUN apt update && \
   apt install -yq --no-install-recommends \
     make \
     texlive-latex-recommended \
-    texlive-fonts-recommended \
     texlive-pictures \
-    texlive-lang-spanish \
     curl \
     wget \
     xz-utils 
@@ -24,7 +22,7 @@ COPY texpkgs.txt .
 ## configuraremos para usar el repository correspondiente.
 RUN tlmgr --usermode init-usertree 
 RUN tlmgr --usermode option repository ftp://tug.org/historic/systems/texlive/2022/tlnet-final
-RUN tlmgr --usermode install $(cat texpkgs.txt | tr -s '\n' ' ')
+RUN tlmgr --usermode install $(cat texpkgs.txt | grep -v '#' | tr -s '\n' ' ')
 
 FROM base as build
 

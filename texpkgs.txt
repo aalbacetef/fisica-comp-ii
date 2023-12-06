@@ -5,3 +5,37 @@ courier
 float
 listings
 mleftright
+
+# spanish packages 
+babel-spanish
+hyphen-spanish
+
+# fonts
+avantgar
+bookman
+charter
+cmextra
+courier
+euro
+euro-ce
+eurosym
+fpl
+helvetic
+manfnt-font
+marvosym
+mathpazo
+mflogo-font
+ncntrsbk
+palatino
+pxfonts
+rsfs
+symbol
+times
+txfonts
+utopia
+wasy
+wasy-type1
+wasysym
+zapfchan
+zapfding
+
