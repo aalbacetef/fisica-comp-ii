@@ -1,0 +1,81 @@
+\documentclass{article}
+
+\usepackage{listings}
+\usepackage{color}
+\usepackage{courier}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{mleftright}
+\usepackage{amsfonts}
+\usepackage{hyperref}
+\usepackage{csvsimple}
+
+\newcommand{\lnn}[1]{%
+	\ln\left(#1\right)%
+}
+
+\newcommand{\lnb}[1]{%
+	\ln\mleft(#1\mright)%
+}
+
+
+\title{PEC V - Física Computacional II}
+\date{10-12-2023}
+\author{Arturo Felipe Albacete Fernández}
+
+
+
+\lstset{
+	basicstyle=\footnotesize\ttfamily,
+	breaklines=true,
+	frame=tb,
+	tabsize=4,
+	columns=fixed,
+	showstringspaces=false,
+	showtabs=false,
+	keepspaces,
+	commentstyle=\color{red},
+	keywordstyle=\color{blue}
+}
+\lstset{frame=single}
+
+
+\begin{document}
+
+% titulo
+\maketitle
+\newpage
+
+% TOC
+\tableofcontents
+\newpage
+
+% intro
+\input{chapters/00-intro.tex}
+\newpage
+
+% ejercicio A - regla del trapecio
+\input{chapters/01-regla-del-trapecio.tex}
+\newpage 
+
+
+% ejercicio B - método de romberg
+\input{chapters/02-metodo_de_romberg.tex}
+\newpage 
+
+% ejercicio C - cuadratura de Gauss
+\input{chapters/03-cuadratura_de_gauss.tex}
+\newpage
+
+
+
+% apendice
+\input{chapters/appendix.tex}
+\newpage
+
+
+
+\end{document}

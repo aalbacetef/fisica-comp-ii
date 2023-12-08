@@ -1,0 +1,63 @@
+\section{Ejercicio B - Método de Romberg}
+
+
+\subsection{Problema}
+
+Utilizando los resultados del apartado a), realice la extrapolación de Romberg para obtener una mejor aproximación numérica de las dos integrales de Fresnel. Indique cuántas evaluaciones de las funciones se requieren.
+
+
+\subsection{Análisis}
+
+
+\subsubsection{Extrapolación de Richardson}
+
+La extrapolación de Richardson es un método que pertenece a la familia de aceleración de series.
+
+Se puede aplicar cuando el error de una aproximación sigue la forma: 
+
+$$
+O(x^p) = \sum_{k=p} a_k (x - c)^k
+$$
+
+Dada una constante que nos interesa aproximar, como por ejemplo:
+
+$$
+m = \int_{a}^{b}  f(x) dx
+$$
+
+planteamos una aproximación $L_i(h)$, función del valor del paso discretante del domnio $I = [a, b]$. Le daremos la forma: 
+
+$$
+m = L_j(h) + \sum_{k = j}a_k h^k
+$$
+
+El error es la suma y es de orden $O(h^j)$.
+
+Si reducimos el paso por un factor de $\frac{h}{2}$ y manipulamos algebraicamente obtenemos una nueva aproximación en el que el término de orden $O(h^j)$ es eliminado.
+
+
+\subsubsection{Método de Romberg}
+
+El método de romberg se basa en obtener una aproximación mejor combinando la regla del trapecio compuesto con la extrapolación de Richardson.
+
+\subsubsection{Implementación}
+
+La implementación del método se puede ver en \ref{code:romberg}
+
+\subsection{Resolución}
+
+
+El código que resuelve el ejercicio se puede ver en \ref{code:ex2}. 
+
+\paragraph{Valores} Los resultados se han compilado en una tabla.
+
+
+\begin{table}[H]
+	\centering
+	\csvreader[
+	tabular=|c|c|c|c|,
+	table head=\hline \textbf{fn} & \textbf{Valor} & \textbf{Num. Evals} \\\hline,
+	late after last line=\\\hline,
+	]{data/romberg_c_s.csv}{}{\csvlinetotablerow}
+\end{table}
+

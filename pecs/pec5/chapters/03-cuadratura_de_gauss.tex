@@ -1,0 +1,68 @@
+\section{Ejercicio C - Cuadratura de Gauss}
+
+
+\subsection{Problema}
+
+Calcule $C(w)$ y $S(w)$ para $w = 5$ utilizando la cuadratura gaussiana de $64$ puntos. En el Plan de Trabajo del curso virtual (Tema 5), se da un fichero con dos columnas de datos. La primera columna son las raíces del polinomio de Legendre de grado 64 en el intervalo $[-1, 1]$ y la segunda son los pesos (o factores de ponderación) correspondientes para la cuadratura gaussiana.
+
+\subsection{Análsis}
+
+El problema se trata de usar la forma de Gauss-Legendre, pero con una traslación del intervalo $[1, 1]$ al intervalo $[a, b]$.
+
+\paragraph{Cuadratura de Gauss}
+
+La cuadratura de Gauss-Legendre aproxima la integral de una función sobre un intervalo $[-1, 1]$ usando factores de ponderación $(w_i)$ y polinomios ortogonales con raices $x_i$.
+
+Esto tiene la forma:
+
+$$
+\int_{-1}^{1} dx ~ f(x) 
+\approx \sum_{i} w_i f(x_i)
+$$
+
+
+\paragraph{Traslación}
+Para hacer una traslación de una cuadratura de Gauss:
+
+$$ \sum w_i f(x_i) = \int_{-1}^{1} dx ~ f(x) $$ 
+
+Se modifican los parámetros de la siguiente forma: 
+
+$$
+\int_{a}^{b}dx~ f(x) = \frac{b - a}{2} \int_{-1}^{1} dx ~ f( \frac{b-a}{2} x + \frac{a + b}{2})
+$$
+
+Y usando la aproximación de Cuadratura de Gauss:
+
+\begin{equation}
+\int_{a}^{b}dx~ f(x) \approx
+\frac{b - a}{2}
+\sum_{i}w_i f(\frac{b-a}{2} x_i + \frac{a + b}{2} )
+\end{equation}
+
+
+
+\subsubsection{Implementación}
+
+La implementación del método se puede ver en \ref{code:gauss_quad}
+
+
+\subsection{Resolución}
+
+
+El código que resuelve el ejercicio se puede ver en \ref{code:ex3}. 
+
+\paragraph{Valores} Los resultados se han compilado en una tabla.
+
+
+\begin{table}[H]
+	\centering
+	\csvreader[
+	tabular=|c|c|c|,
+	table head=\hline \textbf{fn} & \textbf{Valor} \\\hline,
+	late after last line=\\\hline,
+	]{data/gauss_quad_c_s.csv}{}{\csvlinetotablerow}
+\end{table}
+
+
+
