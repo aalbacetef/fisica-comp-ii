@@ -1,17 +1,14 @@
 from math import sqrt
+from typing import Callable, TypeAlias
+from code.methods.types import FloatFunc
 from matplotlib import pyplot as plt
 
 
-from code.methods.gaussian_quadrature import (
-    gaussian_quadrature,
-    gaussian_quadrature2,
-)
-
-from code.methods.types import FloatFunc
+from code.methods.gaussian_quadrature import gaussian_quadrature2
 from code.pecs.pec5.data import antideriv_C, antideriv_S, quad_point_data
 
 
-def u(x, lam, q_0) -> float:
+def u(x: float, lam: float, q_0: float) -> float:
     return x * sqrt(2.0 / (lam * q_0))
 
 
@@ -19,7 +16,10 @@ def v(y: float, lam: float, q_0: float) -> float:
     return y * sqrt(2.0 / (lam * q_0))
 
 
-def intensidad(q_0: float, x: float, y: float, lam: float, approx):
+ApproxFunc: TypeAlias = Callable[[FloatFunc, tuple[float, float]], float]
+
+
+def intensidad(q_0: float, x: float, y: float, lam: float, approx: ApproxFunc):
     U = u(x, lam, q_0)
     V = v(y, lam, q_0)
 
@@ -35,7 +35,6 @@ def intensidad(q_0: float, x: float, y: float, lam: float, approx):
 
 
 if __name__ == "__main__":
-    # constants
     L_x = 4.0 * sqrt(79.0) / 25.0
     L_y = 6.0 * sqrt(79.0) / 25.0
     lam = 0.632  # nm -> mm
@@ -51,4 +50,6 @@ if __name__ == "__main__":
     approximated_value = intensidad(
         q_0, x, y, lam, gaussian_quadrature2(points, weights)
     )
-    print("I/I_0: %f" % approximated_value)
+
+    with open("pecs/pec5/data/intensity.txt", mode="w") as file:
+        file.write("%f" % approximated_value)

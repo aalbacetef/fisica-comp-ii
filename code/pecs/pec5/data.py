@@ -4,17 +4,17 @@ from math import cos, sin
 import os
 
 
-def antideriv_C(x):
+def antideriv_C(x: float) -> float:
     angle = PI * 0.5
     return cos(angle * x * x)
 
 
-def antideriv_S(x):
+def antideriv_S(x: float) -> float:
     angle = PI * 0.5
     return sin(angle * x * x)
 
 
-def quad_point_data():
+def quad_point_data() -> dict:
     fpath = os.path.realpath(__file__)
     base_dir = os.path.dirname(fpath)
 

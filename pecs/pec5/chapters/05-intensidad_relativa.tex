@@ -1,0 +1,46 @@
+\section{Ejercicio D - Error de la aproximación}
+
+\subsection{Problema}
+
+Consideremos una apertura de dimensiones 
+$L_x = 4\frac{\sqrt{79}}{25}$ mm y $L_y = 6\frac{\sqrt{79}}{25}$ mm situada a una distancia de $q_0 = 400$ mm de la pantalla y sea la longitud de onda de iluminación $\lambda = 632$ nm. 
+Recordando que las integrales de Fresnel son funciones impares, es decir, $C(\omega) = -C(-\omega)$ y $S(\omega) = -S(-\omega)$, calcule la intensidad relativa del patrón de difracción $I/I_0$ en el punto de la pantalla para el cual $x_1 = - \frac{L_x}{2}, x_2 = \frac{L_x}{2} , y_1 = -\frac{L_y}{2} , y_2 = \frac{L_y}{2}$ . (Haga uso de alguna estimación numérica de las integrales de Fresnel involucradas).
+
+Se definen $u = u(x)$ y $v = v(y)$ como:
+
+$$
+	u(x) = x \sqrt{\frac{2}{\lambda q_0}} \ \ \ \ \ \ \ \ \ 
+	v(y) = y \sqrt{\frac{2}{\lambda q_0}}
+$$
+
+\subsection{Resolución}
+
+
+El código que resuelve el ejercicio se puede ver en \ref{code:ex5}. 
+
+Se puede simplificar la ecuación viendo que:
+
+\begin{align*}
+	&x_1 = -x_2 \\
+	&y_1 = -y_y \\ 
+	&u(-x) = -u(x) \\
+	&v(-y) = -v(y) \\ 
+	&u_1 = -u_2 \\
+	&v_1 = -v_2 \\
+	&C(a) - C(-a) = 2C(a) \\
+	&S(a) - S(-a) = 2S(a)
+\end{align*}
+
+Lo cual da:
+
+$$
+\frac{I}{I_0} = 4 [
+(	C(u_2) ^2 + S(u_2)^2)
+(	C(v_2) ^2 + S(v_2)^2)
+]
+$$
+
+El valor calculado es: 
+
+$$\frac{I}{I_0}  = \input{data/intensity.txt}$$
+
