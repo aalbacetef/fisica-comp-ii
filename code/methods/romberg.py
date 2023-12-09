@@ -8,21 +8,21 @@ def romberg(f: FloatFunc, interval: tuple[float, float]) -> IntTableFunc:
     T = trapezium(f, interval)
 
     def inner(m: int) -> Table:
-        matrix = []
+        # initialize table
+        R: Table = [[0] * (k + 1) for k in range(m + 1)]
+
+        for k in range(m + 1):
+            R[k][0] = T(1 << k)
+
         for j in range(1, m + 1):
-            matrix.append([])
-            matrix[j - 1].append([])
+            for i in range(j, m + 1):
+                tmp_1 = 4.0**j
+                tmp_2 = R[i][j - 1]
+                tmp_3 = R[i - 1][j - 1]
+                tmp_4 = tmp_1 - 1.0
 
-            matrix[j - 1][0] = T(int(pow(2, j - 1)))
-            if j == 1:
-                continue
-            for k in range(2, j + 1):
-                elem = matrix[j - 1][k - 2]
-                top = elem - matrix[j - 2][k - 2]
-                bot = pow(4, k - 1) - 1
-                value = elem + (top / bot)
-                matrix[j - 1].append(value)
+                R[i][j] = (tmp_1 * tmp_2 - tmp_3) / tmp_4
 
-        return matrix
+        return R
 
     return inner
