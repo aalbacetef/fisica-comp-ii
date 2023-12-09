@@ -70,6 +70,20 @@ pec4:
 		--output-directory=../../documents/pec4 \
 		pec4.tex 
 
+pec5:
+	mkdir -p documents/pec5
+	cd ./pecs/pec5 && \
+		pdflatex \
+		--synctex=1 --interaction=nonstopmode \
+		--output-directory=../../documents/pec5 \
+		pec5.tex 
+	cd ./pecs/pec5 && \
+		pdflatex \
+		--synctex=1 --interaction=nonstopmode \
+		--output-directory=../../documents/pec5 \
+		pec5.tex 
+
+
 run-tex: build-tex-img 
 	$(RUNNER) run -it --rm $(TAG_TEX) bash
 
