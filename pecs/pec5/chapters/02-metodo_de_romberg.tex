@@ -25,7 +25,7 @@ $$
 m = \int_{a}^{b}  f(x) dx
 $$
 
-planteamos una aproximación $L_i(h)$, función del valor del paso discretante del domnio $I = [a, b]$. Le daremos la forma: 
+planteamos una aproximación $L_i(h)$, función del valor del paso discretante del dominio $I = [a, b]$. Le daremos la forma: 
 
 $$
 m = L_j(h) + \sum_{k = j}a_k h^k
@@ -55,7 +55,7 @@ El código que resuelve el ejercicio se puede ver en \ref{code:ex2}.
 \begin{table}[H]
 	\centering
 	\csvreader[
-	tabular=|c|c|c|c|,
+	tabular=|l|l|l|,
 	table head=\hline \textbf{fn} & \textbf{Valor} & \textbf{Num. Evals} \\\hline,
 	late after last line=\\\hline,
 	]{data/romberg_c_s.csv}{}{\csvlinetotablerow}

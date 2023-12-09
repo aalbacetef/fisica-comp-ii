@@ -2,7 +2,7 @@
 
 \subsection{Problema}
 
-Calcule $C(w)$ y $S(w)$ para $w = 5$ utilizando las aproximaciones dadas por la regla
+Calcule $C(\omega)$ y $S(\omega)$ para $\omega = 5$ utilizando las aproximaciones dadas por la regla
 compuesta del trapecio usando un número de subdivisiones de
 
 $$
@@ -91,16 +91,16 @@ Obtenemos la siguiente figura:
 
 \begin{figure}[H]
 	\includegraphics[width=\linewidth]{figures/ex1.png}
-	\caption{Gráfica de C(w) y S(w) usando la regla del trapecio por cada $n$.}
+	\caption{Gráfica de C($\omega$) y S($\omega$) usando la regla del trapecio por cada $n$.}
 	\label{fig:c_s_subdiv}
 \end{figure}
 
 
-\begin{table}[htbp]
+\begin{table}[H]
 	\centering
 	\csvreader[
 	tabular=|c|c|c|,
-	table head=\hline \textbf{n} & \textbf{C(w)} & \textbf{S(w)} \\\hline,
+	table head=\hline \textbf{n} & \textbf{C($\omega$)} & \textbf{S($\omega$)} \\\hline,
 	late after last line=\\\hline,
 	]{data/c_s_subdivs.csv}{}{\csvlinetotablerow}
 \end{table}

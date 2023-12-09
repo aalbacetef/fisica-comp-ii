@@ -1,8 +1,10 @@
 amsmath
+amsfonts
 babel
 csvsimple
 courier
 float
+hyperref
 listings
 mleftright
 

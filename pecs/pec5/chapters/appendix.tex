@@ -5,6 +5,11 @@
 \lstinputlisting[language=Python]{../../code/methods/types.py}
 \newpage
 
+\subsection{Util}\label{code:util}
+
+\lstinputlisting[language=Python]{../../code/util.py}
+\newpage
+
 \subsection{Regla del Trapecio}\label{code:trapezium}
 
 \lstinputlisting[language=Python]{../../code/methods/trapezium.py}
@@ -34,4 +39,35 @@
 \subsection{Ejercicio C}\label{code:ex3}
 
 \lstinputlisting[language=Python]{../../code/pecs/pec5/ex3.py}
+\newpage
+
+
+\subsection{Ejercicio D}\label{code:ex4}
+
+\lstinputlisting[language=Python]{../../code/pecs/pec5/ex4.py}
+\newpage
+
+
+\subsection{Ejercicio D - tabla de puntos}\label{ex4:table}
+\begin{minipage}{0.45\textwidth}
+\begin{table}[H]
+	\csvreader[
+	tabular=|c|l|l|,
+	table head=\hline \textbf{\#} & \textbf{Gauss. Quad.} & \textbf{Trapezium} \\\hline,
+	filter test=\ifnumless{\thecsvrow}{32},
+	late after last line=\\\hline,
+	]{data/xi_comp.csv}{}{\csvlinetotablerow}
+\end{table}
+\end{minipage}
+\hfill
+\begin{minipage}{0.45\textwidth}
+\begin{table}[H]
+	\csvreader[
+	tabular=|c|l|l|,
+	table head=\hline \textbf{\#} & \textbf{Gauss. Quad.} & \textbf{Trapezium} \\\hline,
+	late after last line=\\\hline,
+	filter test= \ifnumgreater{\thecsvinputline}{33}
+	]{data/xi_comp.csv}{}{\csvlinetotablerow}
+\end{table}
+\end{minipage}
 \newpage

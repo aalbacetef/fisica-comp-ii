@@ -12,6 +12,7 @@
 \usepackage{amsfonts}
 \usepackage{hyperref}
 \usepackage{csvsimple}
+\usepackage{geometry}
 
 \newcommand{\lnn}[1]{%
 	\ln\left(#1\right)%
@@ -42,6 +43,12 @@
 }
 \lstset{frame=single}
 
+%\geometry{
+%	 a4paper,
+%	total={170mm,257mm},
+%	left=15mm,
+%	top=15mm,
+%}
 
 \begin{document}
 
@@ -70,7 +77,9 @@
 \input{chapters/03-cuadratura_de_gauss.tex}
 \newpage
 
-
+% ejercicio D - comparación de las aproximaciones
+\input{chapters/04-comparacion_aproximaciones.tex}
+\newpage
 
 % apendice
 \input{chapters/appendix.tex}

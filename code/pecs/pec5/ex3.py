@@ -5,7 +5,7 @@ from code.util import write_csv
 
 if __name__ == "__main__":
     w = 5.0
-    interval = [0.0, w]
+    interval = (0.0, w)
     quad_points = quad_point_data()
 
     c_w = gaussian_quadrature(antideriv_C, interval)
