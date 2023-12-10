@@ -12,11 +12,11 @@ def romberg(f: FloatFunc, interval: tuple[float, float]) -> IntTableFunc:
         R: Table = [[0] * (k + 1) for k in range(m + 1)]
 
         for k in range(m + 1):
-            R[k][0] = T(1 << k)
+            R[k][0] = T(int(pow(2, k)))
 
         for j in range(1, m + 1):
             for i in range(j, m + 1):
-                tmp_1 = 4.0**j
+                tmp_1 = int(pow(4.0, j))
                 tmp_2 = R[i][j - 1]
                 tmp_3 = R[i - 1][j - 1]
                 tmp_4 = tmp_1 - 1.0

@@ -1,12 +1,12 @@
 from typing import Callable
+from matplotlib import pyplot as plt
+
 from code.methods.gaussian_quadrature import gaussian_quadrature
 from code.methods.romberg import romberg
 from code.methods.trapezium import trapezium
+from code.methods.types import FloatFunc
 from code.util import write_csv
 
-from matplotlib import pyplot as plt
-
-from code.methods.types import FloatFunc
 from code.pecs.pec5.data import quad_point_data, antideriv_C, antideriv_S
 
 

@@ -2,6 +2,7 @@ from matplotlib import pyplot as plt
 
 from code.methods.trapezium import trapezium
 from code.util import write_csv
+
 from code.pecs.pec5.data import antideriv_C, antideriv_S
 
 if __name__ == "__main__":

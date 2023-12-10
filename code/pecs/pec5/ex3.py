@@ -1,6 +1,7 @@
 from code.methods.gaussian_quadrature import gaussian_quadrature
-from code.pecs.pec5.data import antideriv_C, antideriv_S, quad_point_data
 from code.util import write_csv
+
+from code.pecs.pec5.data import antideriv_C, antideriv_S, quad_point_data
 
 
 if __name__ == "__main__":

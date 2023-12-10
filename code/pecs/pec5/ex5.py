@@ -1,10 +1,11 @@
 from math import sqrt
 from typing import Callable, TypeAlias
-from code.methods.types import FloatFunc
 from matplotlib import pyplot as plt
 
 
 from code.methods.gaussian_quadrature import gaussian_quadrature2
+from code.methods.types import FloatFunc
+
 from code.pecs.pec5.data import antideriv_C, antideriv_S, quad_point_data
 
 
