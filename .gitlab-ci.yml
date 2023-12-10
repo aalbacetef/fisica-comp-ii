@@ -17,8 +17,8 @@ build:
   artifacts:
     paths:
       - documents/
-  reports:
-    dotenv: job.env 
+    reports:
+      dotenv: job.env 
 
 do_release:
   stage: release
@@ -33,7 +33,7 @@ do_release:
   variables:
     TAG: '$CI_COMMIT_TAG'
   release:                               
-  name: "Entrega de la $TAG"
+    name: "Entrega de la $TAG"
     tag_name: '$TAG'
     description: 'Entrega de la $TAG'
     assets:

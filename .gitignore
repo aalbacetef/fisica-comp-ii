@@ -9,3 +9,9 @@
 
 # python cache
 __pycache__/
+
+# ignore top-level pngs as these are generated during dev
+/*.png
+
+# generated documents
+/documents/
