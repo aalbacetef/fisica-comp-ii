@@ -1,6 +1,6 @@
 
 
-.PHONY: build-imgs build-tex-img build-py-img run-dev run-tex gen-documents clean pec3 clean-pycache
+.PHONY: build-imgs build-tex-img build-py-img run-dev run-tex gen-documents clean clean-pycache
 
 ## si usas docker, cambiar esto a "docker"
 RUNNER := podman 
@@ -50,6 +50,7 @@ gen-documents: build-tex-img clean
 		$(TAG_TEX) \
 		make pec5
 
+.PHONY: pec3 pec4 pec5
 	
 pec3:
 	mkdir -p documents/pec3 
@@ -99,6 +100,8 @@ run-py: build-py-img
 
 run-py-dev: build-py-img 
 	$(RUNNER) run -it --rm -v $(shell realpath .):/project $(TAG_PYT) bash 
+
+.PHONY: run-pec3 run-pec4 run-pec5 
 
 run-pec3: 
 	poetry run python -m code.pecs.pec3.ex1
