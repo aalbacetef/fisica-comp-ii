@@ -17,8 +17,8 @@ build:
   artifacts:
     paths:
       - documents/
-  reports:
-    dotenv: job.env 
+    reports:
+      dotenv: job.env 
 
 do_release:
   stage: release
