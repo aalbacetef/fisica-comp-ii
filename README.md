@@ -7,6 +7,7 @@ En este repo hay dos Dockerfiles. `tex.Dockerfile` se usa para generar los docum
 Para ver las entregas, ir a "Releases" 
 ([link](https://gitlab.com/aalbacetef/fisica-comp-II/-/releases)).
 
+## Comandos
 
 La forma más fácil de interactuar con este repo es con `make`. 
 
