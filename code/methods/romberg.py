@@ -21,7 +21,7 @@ def romberg(f: FloatFunc, interval: tuple[float, float]) -> IntTableFunc:
                 tmp_3 = R[i - 1][j - 1]
                 tmp_4 = tmp_1 - 1.0
 
-                R[i][j] = (tmp_1 * tmp_2 - tmp_3) / tmp_4
+                R[i][j] = ((tmp_1 * tmp_2) - tmp_3) / tmp_4
 
         return R
 

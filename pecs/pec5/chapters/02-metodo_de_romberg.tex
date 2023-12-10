@@ -49,7 +49,7 @@ La implementación del método se puede ver en \ref{code:romberg}
 
 El código que resuelve el ejercicio se puede ver en \ref{code:ex2}. 
 
-\paragraph{Valores} Los resultados se han compilado en una tabla.
+\paragraph{Valores} Los resultados se han compilado en una tabla (para un valor de $m= 8$).
 
 
 \begin{table}[H]
@@ -61,3 +61,11 @@ El código que resuelve el ejercicio se puede ver en \ref{code:ex2}.
 	]{data/romberg_c_s.csv}{}{\csvlinetotablerow}
 \end{table}
 
+En la siguiente figura podemos ver como el método de Romberg converge con $m > 5$.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\linewidth]{figures/romb_for_m.png}
+	\caption{Método de Romberg según incrementamos $m$.}
+	\label{fig:romb_for_m}
+\end{figure}
