@@ -11,7 +11,7 @@ El problema se trata de usar la forma de Gauss-Legendre, pero con una traslació
 
 \paragraph{Cuadratura de Gauss}
 
-La cuadratura de Gauss-Legendre aproxima la integral de una función sobre un intervalo $[-1, 1]$ usando factores de ponderación $(w_i)$ y polinomios ortogonales con raices $x_i$.
+La cuadratura de Gauss-Legendre aproxima la integral de una función sobre un intervalo $[-1, 1]$ usando factores de ponderación $w_i$ y polinomios con raices $x_i$.
 
 Esto tiene la forma:
 
@@ -34,11 +34,11 @@ $$
 
 Y usando la aproximación de Cuadratura de Gauss:
 
-\begin{equation}
+\begin{equation*}
 \int_{a}^{b}dx~ f(x) \approx
 \frac{b - a}{2}
 \sum_{i}w_i f(\frac{b-a}{2} x_i + \frac{a + b}{2} )
-\end{equation}
+\end{equation*}
 
 
 

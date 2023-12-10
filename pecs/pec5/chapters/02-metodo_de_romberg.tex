@@ -25,20 +25,20 @@ $$
 m = \int_{a}^{b}  f(x) dx
 $$
 
-planteamos una aproximación $L_i(h)$, función del valor del paso discretante del dominio $I = [a, b]$. Le daremos la forma: 
+planteamos una aproximación $L_p(h)$, donde $h$ es el tamaño del paso en que dividimos $I = [a, b]$. Le daremos la forma: 
 
 $$
-m = L_j(h) + \sum_{k = j}a_k h^k
+m = L_p(h) + \sum_{k} a_k h^k
 $$
 
-El error es la suma y es de orden $O(h^j)$.
+El error es de orden $O(h^p)$.
 
-Si reducimos el paso por un factor de $\frac{h}{2}$ y manipulamos algebraicamente obtenemos una nueva aproximación en el que el término de orden $O(h^j)$ es eliminado.
+	Si reducimos el paso por un factor de $\frac{h}{q}$ y manipulamos algebraicamente obtenemos una nueva aproximación $L_{p+1}$ en que el error es de orden $O(h^{p+1})$.
 
 
 \subsubsection{Método de Romberg}
 
-El método de romberg se basa en obtener una aproximación mejor combinando la regla del trapecio compuesto con la extrapolación de Richardson.
+El método de romberg se basa en combinar la regla compuesto del trapecio con la extrapolación de Richardson para obtener una mejor aproximación a integrales que si se usara solamente la regla compuesta del trapecio.
 
 \subsubsection{Implementación}
 
