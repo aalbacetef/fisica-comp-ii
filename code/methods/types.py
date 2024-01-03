@@ -7,6 +7,7 @@ Table: TypeAlias = list[list[float]]
 
 FuncVectorK: TypeAlias = Callable[[Vector, int], float]
 FuncVectorX: TypeAlias = Callable[[Vector, float], float]
+FuncXVector: TypeAlias = Callable[[float, Vector], Vector]
 IntFloatFunc: TypeAlias = Callable[[int], float]
 FloatFunc: TypeAlias = Callable[[float], float]
 IntMatrixFunc: TypeAlias = Callable[[int], Matrix]
