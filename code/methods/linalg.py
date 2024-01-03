@@ -162,3 +162,26 @@ def solve(A: Matrix, b: Vector) -> Vector:
     y = sub_forward(L, b)
     x = sub_backward(U, y)
     return x
+
+
+def vec_sum(a: Vector, b: Vector) -> Vector:
+    """Sums two vectors. Raises an exception if lengths don't match."""
+    m = len(a)
+    n = len(b)
+    if n != m:
+        raise Exception("lengths of vectors differ: m=%d, n=%d" % (m, n))
+
+    c = [a_k for a_k in a]
+    for k in range(n):
+        c[k] += b[k]
+
+    return c
+
+
+def vec_scalar(a: Vector, k: float) -> Vector:
+    """Multiplies a vector by a scalar."""
+    return [k * a_k for a_k in a]
+
+
+def vec_copy(a: Vector) -> Vector:
+    return [a_k for a_k in a]
