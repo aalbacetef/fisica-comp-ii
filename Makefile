@@ -99,12 +99,12 @@ pec5:
 
 pec6:
 	mkdir -p documents/pec6
-	cd ./pecs/pec5 && \
+	cd ./pecs/pec6 && \
 		pdflatex \
 		--synctex=1 --interaction=nonstopmode \
 		--output-directory=../../documents/pec6 \
 		pec6.tex 
-	cd ./pecs/pec5 && \
+	cd ./pecs/pec6 && \
 		pdflatex \
 		--synctex=1 --interaction=nonstopmode \
 		--output-directory=../../documents/pec6 \
