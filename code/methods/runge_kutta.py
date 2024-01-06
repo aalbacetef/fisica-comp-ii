@@ -36,33 +36,3 @@ def rk4_vec(
         return vec_copy(y_i)
 
     return step
-
-
-# @TODO: just wrap in a vector and call rk4_vec.
-def rk4_scalar(f, t_0: float, y_0: float, h: float):
-    t_i = t_0
-    y_i = y_0
-    coeff = 0.5
-    coeff2 = 1.0 / 6.0
-    coeff3 = 2.0
-
-    def step() -> float:
-        nonlocal y_i
-        nonlocal t_i
-
-        arg0 = t_i + coeff
-
-        k1 = h * f(t_i, y_i)
-        k2 = f(arg0, y_i + (k1 * coeff))
-        k3 = f(arg0, y_i + (k2 * coeff))
-        k4 = f(t_i + h, y_i + (k3))
-
-        y_incr = k1 + (k2 * coeff3) + k4 + (k3 * coeff3)
-
-        # update variables
-        y_i = y_i + (y_incr * coeff2)
-        t_i += h
-
-        return y_i
-
-    return step

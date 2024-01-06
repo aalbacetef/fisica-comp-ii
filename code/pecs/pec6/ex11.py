@@ -4,7 +4,9 @@ from typing import Tuple
 
 from matplotlib import pyplot as plt
 
+from code.methods.linalg import vec_scalar
 from code.methods.types import Vector
+from code.pecs.pec6.data import v_light
 
 
 def load_data(path: str) -> Tuple[Vector, list[Vector]]:
@@ -70,14 +72,13 @@ def mk_plot(t: list[float], v: list[Vector], titles: list[str], path: str):
 
 if __name__ == "__main__":
     # leer csv ya generados
-    t, r = load_data("pecs/pec6/data/simul_no_rel_r.csv")
-    t, v = load_data("pecs/pec6/data/simul_no_rel_v.csv")
-
     png_paths = [
-        "pecs/pec6/figures/no_rel_rx_ry_rz.png",
-        "pecs/pec6/figures/no_rel_vx_vy_vz.png",
+        "pecs/pec6/figures/rel_rx_ry_rz.png",
+        "pecs/pec6/figures/rel_vx_vy_vz.png",
+        "pecs/pec6/figures/rel_adim_vx_vy_vz.png",
     ]
 
+    t, r = load_data("pecs/pec6/data/simul_rel_r.csv")
     mk_plot(
         t,
         r,
@@ -85,6 +86,7 @@ if __name__ == "__main__":
         png_paths[0],
     )
 
+    t, v = load_data("pecs/pec6/data/simul_rel_v.csv")
     mk_plot(
         t,
         v,
@@ -92,11 +94,16 @@ if __name__ == "__main__":
         png_paths[1],
     )
 
-    plt.figure(1)
-    x = [r_k[0] for r_k in r]
-    y = [r_k[1] for r_k in r]
-    plt.ylabel("r_x(t)")
-    plt.xlabel("r_y(t)")
-    plt.plot(y, x)
-    plt.savefig("pecs/pec6/figures/no_rel_y_x.png")
-    plt.close()
+    v_adim = [vec_scalar(v_k, v_light) for v_k in v]
+    mk_plot(
+        t,
+        v_adim,
+        ["'v_x(t)", "'v_y(t)", "'v_z(t)"],
+        png_paths[2],
+    )
+
+    v_radial = [sqrt((v_k[0] * v_k[0]) + (v_k[1] * v_k[1])) for v_k in v]
+    vz = [v_k[2] for v_k in v]
+    _, (ax1, ax2) = plt.subplots(2)
+    ax1.plot(t, v_radial)
+    ax2.plot(t, vz)

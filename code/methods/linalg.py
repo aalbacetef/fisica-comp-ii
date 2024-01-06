@@ -185,3 +185,17 @@ def vec_scalar(a: Vector, k: float) -> Vector:
 
 def vec_copy(a: Vector) -> Vector:
     return [a_k for a_k in a]
+
+
+def curl(v: Vector, w: Vector) -> Vector:
+    """Compute the curl of a vector with a matrix."""
+    # sanity check
+    n = 3
+    if len(v) != n or len(w) != n:
+        raise ValueError("expected a vector of length: %d" % n)
+
+    ux = (v[1] * w[2]) - (v[2] * w[1])
+    uy = (v[2] * w[0]) - (v[0] * w[2])
+    uz = (v[0] * w[1]) - (v[1] * w[0])
+
+    return [ux, uy, uz]
