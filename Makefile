@@ -146,7 +146,9 @@ run-pec5:
 	poetry run python -m code.pecs.pec5.ex5
 
 run-pec6:
-	poetry run python -m code.pecs.pec6.ex3
+	poetry run python -m code.pecs.pec6.ex4
+	poetry run python -m code.pecs.pec6.ex5
 
+.PHONY: clean-pycache
 clean-pycache:
 	find . -type d -name '__pycache__' | xargs -I W rm -r W
