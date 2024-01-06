@@ -1,0 +1,41 @@
+\section{Ejercicio CR - Momento Lineal}
+
+\subsection{Problema}
+Escriba el sistema de ecuaciones diferenciales que describe la posición de la partícula en términos de los componentes del momento lineal.
+
+\subsection{Resolución}
+
+Dado que:
+
+$$
+\diff{\vec{r}(t)}{t} = \vec{v}(t) = \frac{1}{\gamma m} \vec{p}_{rel}(t)
+$$
+
+Obtenemos el sistema de ecuaciones diferenciales:
+
+\begin{equation*} 
+	\begin{bmatrix} 
+		\diff{r_x}{t} \\ \\
+		\diff{r_y}{t} \\ \\ 
+		\diff{r_z}{t} 
+	\end{bmatrix} = 
+\frac{1}{\gamma m}
+\begin{bmatrix}
+	p_{rel_x}(t) \\ \\ p_{rel_y}(t) \\ \\ p_{rel_z}(t)
+\end{bmatrix}
+\end{equation*} 
+y: 
+
+\begin{equation*} 
+	\begin{bmatrix} 
+		\diff{r_x}{t} \\ \\
+		\diff{r_y}{t} \\ \\ 
+		\diff{r_z}{t} 
+	\end{bmatrix} = 
+	\frac{1}{\sqrt{ 
+			m^2 + \frac{1}{c^2} \sum p_{rel_k}	
+	}}
+	\begin{bmatrix}
+		p_{rel_x}(t) \\ \\ p_{rel_y}(t) \\ \\ p_{rel_z}(t)
+	\end{bmatrix}
+\end{equation*} 

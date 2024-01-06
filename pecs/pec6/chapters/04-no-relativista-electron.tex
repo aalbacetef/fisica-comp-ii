@@ -6,4 +6,31 @@ Sea la partícula un electrón, es decir, con carga $q = -1.602 \cdot 10^{-19} C
 
 \subsection{Resolución}
 
-El código que resuelve el ejercicio se puede ver en \ref{code:ex4}. 
+El código que resuelve el ejercicio se puede ver en \ref{code:ex4}.
+
+Los resultados completos se pueden ver en el repositorio git y los primeros 50 puntos están en \ref{data:r_v_nonrel}. 
+
+Los valores para las dos iteraciones temporales son:
+
+
+\begin{table}[H]
+	\centering
+	\csvreader[
+	tabular=|c|l|l|l|,
+table head=\hline \textbf{t} & \textbf{$r_x$} & \textbf{$r_y$} & \textbf{$r_z$} \\\hline,
+	filter test=\ifnumless{\thecsvrow}{3},
+	late after last line=\\\hline,
+	]{data/simul_no_rel_r.csv}{}{\csvlinetotablerow}
+\end{table}
+
+\begin{table}[H]
+	\centering
+	\csvreader[
+	tabular=|c|l|l|l|,
+	table head=\hline \textbf{t} & \textbf{$v_x$} & \textbf{$v_y$} & \textbf{$v_z$} \\ \hline,
+	filter test=\ifnumless{\thecsvrow}{3},
+	late after last line=\\\hline,
+	]{data/simul_no_rel_v.csv}{}{\csvlinetotablerow}
+\end{table}
+
+

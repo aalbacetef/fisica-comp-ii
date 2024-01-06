@@ -1,0 +1,39 @@
+\section{Ejercicio DR - Sistema de ED Completo}
+
+\subsection{Problema}
+Presente el sistema de ecuaciones diferenciales completo que hay que resolver para describir el movimiento de una partícula cargada bajo la acción simultánea de un campo eléctrico y magnético. ¿Cuántas ecuaciones diferenciales de primer orden es preciso resolver?
+
+\subsection{Resolución}
+
+El sistema completo consiste en las siguientes ecuaciones:
+
+\begin{equation*} 
+	\begin{bmatrix} 
+	\diff{r_x}{t} \\ \\
+	\diff{r_y}{t} \\ \\ 
+	\diff{r_z}{t} \\ \\
+	\diff{p_{rel_x}}{t} \\ \\
+	\diff{p_{rel_y}}{t} \\ \\ 
+	\diff{p_{rel_z}}{t} 
+\end{bmatrix} = 
+\begin{bmatrix}
+	p_{rel_x}(t) \\ \\ p_{rel_y}(t) \\ \\ p_{rel_z}(t)
+\\ \\
+		\frac{q}{\sqrt{ 
+			m^2 + \frac{1}{c^2} \sum p_{rel_k}	
+	}} \left( 
+	(\sqrt{ 
+		m^2 + \frac{1}{c^2} \sum p_{rel_k}	
+	})\begin{bmatrix} 
+		E_x \\ E_y \\ E_z 
+	\end{bmatrix} + 
+	\begin{bmatrix} 
+		p_{rel_x} \\ p_{rel_y} \\ p_{rel_z}
+	\end{bmatrix} 
+	\times 
+	\begin{bmatrix} B_x \\ B_y \\ B_z \end{bmatrix} 
+	\right)
+\end{bmatrix} 
+\end{equation*}
+
+En total 6 ecuaciones de primer orden.

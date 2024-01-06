@@ -1,0 +1,99 @@
+\section{Ejercicio BR - Factor Lorentz}
+
+\subsection{Problema}
+Exprese el valor del factor $\gamma m$ en términos de los componentes del momento. Finalmente, utilice esa expresión para reescribir el sistema de ecuaciones diferenciales en términos de los componentes cartesianos del momento e indique si se trata de un sistema de ecuaciones diferenciales acopladas o no.
+
+\subsection{Resolución}
+
+Empezamos por:
+
+\begin{equation*}
+	\gamma = 
+\frac{1}{
+	\sqrt{
+	1 - \frac{|| \vec{v} ||^2} {c^2}	
+}
+}
+\end{equation*}
+
+podemos obtener una ecuación más fácil de manipular si:
+
+\begin{align*}
+	\gamma \sqrt{ 1 -  \frac{||\vec{v}||^2}{c^2}} &= 1 \\
+	\gamma^2 (1 - \frac{||\vec{v}||^2}{c^2}) &= 1 \\
+	\gamma ^2 - \frac{\gamma^2}{c^2} || \vec{v} ||^2 & =1
+\end{align*}
+
+Ahora reescribimos $||\vec{v}||^2$ en términos del momento relativista:
+
+\begin{align*}
+|| \vec{v} ||^2 
+	&= \vec{v}\cdot \vec{v} \\
+	&= \sum v_k^2 \\
+	&= \sum (\frac{p_{rel_k}}{\gamma m})^2 \\
+	&= \frac{1}{(\gamma m)^2} \sum p_{rel_k}^2 \\
+\end{align*} 
+
+Lo que finalmente da:
+
+\begin{align*}
+\gamma ^2 - \frac{\gamma^2}{c^2} || \vec{v} ||^2  &= 1 \\
+\gamma ^2 - \frac{\gamma^2}{c^2} \frac{1}{(\gamma m)^2} \sum p_{rel_k}^2  &= 1
+\end{align*}
+
+Ahora podemos obtener una expresión para $\gamma m$:
+
+\begin{align*} 
+\gamma ^2 &=
+1 + \frac{1}{(mc)^2} \sum p_{rel_k}^2 \\
+m^2 \gamma^2 &= 
+	m^2 + \frac{1}{c^2} \sum p_{rel_k} \\
+m \gamma &=
+	\sqrt{ 
+	m^2 + \frac{1}{c^2} \sum p_{rel_k}	
+}
+\end{align*} 
+
+Empezando por la última ecuación del ejercicio anterior:
+
+\begin{equation*} 
+\begin{bmatrix} 
+	\diff{p_{rel_x}}{t} \\ \\
+	\diff{p_{rel_y}}{t} \\ \\ 
+	\diff{p_{rel_z}}{t} 
+\end{bmatrix} = 
+	\frac{q}{\gamma m} \left( 
+(\gamma m)\begin{bmatrix} 
+	E_x \\ E_y \\ E_z 
+\end{bmatrix} + 
+\begin{bmatrix} 
+	p_{rel_x} \\ p_{rel_y} \\ p_{rel_z}
+\end{bmatrix} 
+\times 
+\begin{bmatrix} B_x \\ B_y \\ B_z \end{bmatrix} 
+\right)
+\end{equation*} 
+
+\begin{equation*} 
+	\begin{bmatrix} 
+		\diff{p_{rel_x}}{t} \\ \\
+		\diff{p_{rel_y}}{t} \\ \\ 
+		\diff{p_{rel_z}}{t} 
+	\end{bmatrix} = 
+	\frac{q}{\sqrt{ 
+			m^2 + \frac{1}{c^2} \sum p_{rel_k}	
+	}} \left( 
+	(\sqrt{ 
+		m^2 + \frac{1}{c^2} \sum p_{rel_k}	
+	})\begin{bmatrix} 
+		E_x \\ E_y \\ E_z 
+	\end{bmatrix} + 
+	\begin{bmatrix} 
+		p_{rel_x} \\ p_{rel_y} \\ p_{rel_z}
+	\end{bmatrix} 
+	\times 
+	\begin{bmatrix} B_x \\ B_y \\ B_z \end{bmatrix} 
+	\right)
+\end{equation*} 
+
+Evidentemente estamos ante un sistema de ecuaciones diferenciales acopladas, ya que la ecuación diferencial de cada componente del momento depende de los otros componentes. Esto no sólo es debido a $\gamma$ sino también por $\vec{p}_{rel} \times \vec{B}$ (en el caso de $\vec{B}$ no nulo).

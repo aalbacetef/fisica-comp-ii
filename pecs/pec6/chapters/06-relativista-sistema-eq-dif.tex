@@ -1,0 +1,66 @@
+\section{Ejercicio AR - Sistema de ED}
+
+\subsection{Problema}
+
+Utilizando coordenadas cartesianas en el espacio tridimensional para todas las magnitudes vectoriales, escriba el sistema de ecuaciones diferenciales pervio en términos de los componentes $x$, $y$, $z$ de $\vec{p}$, $\vec{v}$, $\vec{E}$ y $\vec{B}$.
+
+La velocidad depende del momento a través de un factor $\gamma m$. Reescriba ese sistema de ecuaciones diferenciales en términos de los componentes del momento, dejando presente explícitamente el factor $\gamma m$.
+
+\subsection{Resolución}
+
+El sistema de ecuaciones dado por la fuerza de Lorentz es:
+
+\begin{equation*}
+\begin{bmatrix} 
+	\diff{p_{rel_x}}{t} \\ \\
+	\diff{p_{rel_y}}{t} \\ \\ 
+	\diff{p_{rel_z}}{t} 
+\end{bmatrix} = 
+q \left( 
+\begin{bmatrix} 
+	E_x \\ E_y \\ E_z 
+\end{bmatrix} + 
+\begin{bmatrix} 
+	v_x \\ v_y \\ v_z 
+\end{bmatrix} 
+	\times 
+\begin{bmatrix} B_x \\ B_y \\ B_z \end{bmatrix} 
+\right)
+\end{equation*}
+
+donde usamos $p_{rel}$ para ser explícito en que es el momento relativista.
+
+La velocidad se puede reescribir en términos del momento: $ \vec{v} = \frac{1}{\gamma m} \vec{p}_{rel} $.
+
+Por ende:
+
+\begin{equation*}
+	\begin{bmatrix} 
+		\diff{p_{rel_x}}{t} \\ \\
+		\diff{p_{rel_y}}{t} \\ \\ 
+		\diff{p_{rel_z}}{t} 
+	\end{bmatrix} = 
+	q \left( 
+	\begin{bmatrix} 
+		E_x \\ E_y \\ E_z 
+	\end{bmatrix} + 
+\frac{1}{\gamma m}
+	\begin{bmatrix} 
+		p_{rel_x} \\ p_{rel_y} \\ p_{rel_z}
+	\end{bmatrix} 
+	\times 
+	\begin{bmatrix} B_x \\ B_y \\ B_z \end{bmatrix} 
+	\right) =
+	\frac{q}{\gamma m} \left( 
+(\gamma m)\begin{bmatrix} 
+	E_x \\ E_y \\ E_z 
+\end{bmatrix} + 
+\begin{bmatrix} 
+	p_{rel_x} \\ p_{rel_y} \\ p_{rel_z}
+\end{bmatrix} 
+\times 
+\begin{bmatrix} B_x \\ B_y \\ B_z \end{bmatrix} 
+\right)
+\end{equation*}
+
+
