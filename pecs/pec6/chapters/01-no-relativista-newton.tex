@@ -1,0 +1,49 @@
+\section{Ejercicio A - La segunda ley de Newton}
+
+\subsection{Problema}
+
+Plantee la segunda ley de Newton para la partícula cuando el campo eléctrico y magnético son ambos uniformes, constantes y perpendiculares entre sí. Simplifique para el caso particular $vec{E} = (0, 1, 0) \frac{V}{m}$, $vec{B} = (0, 0, 1)\ T$.
+
+\subsection{Análisis}
+
+La segunda ley de Newton define la fuerza sobre un cuerpo como:
+
+\begin{equation}\label{eq:1}
+	\vec{F} = m \vec{a}
+\end{equation}
+
+\subsection{Resolución}
+
+La fuerza de Lorentz sobre una partícula de masa $m$ y carga $q$ es:
+
+\begin{equation}
+	\vec{F} = q(\vec{E} + \vec{v} \times \vec{B})
+\end{equation}
+
+En el caso de que $\vec{E} = (0, 1, 0) \frac{V}{m}$, $\vec{B} = (0, 0, 1)\ T$:
+
+\begin{align*}
+\vec{F}(t)  
+& =
+	q(\uvec{j} + \vec{v}(t) \times \uvec{k}) \\
+& =
+	q(\uvec{j} + v_y \uvec{i} - v_x \uvec{j} ) \\
+& = 
+	qv_y \uvec{i} + q(1-v_x)\uvec{j} \\
+& =
+	q \begin{bmatrix}
+		v_y \\
+		1 - v_x \\
+		0
+	\end{bmatrix}
+\end{align*}
+
+Igualando esto con \eqref{eq:1}, nos da:
+
+\begin{equation*}
+	q \begin{bmatrix}
+	v_y \\
+	1 - v_x \\
+	0
+\end{bmatrix} = m \vec{a}(t)
+\end{equation*}

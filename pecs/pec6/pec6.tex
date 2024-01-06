@@ -1,0 +1,113 @@
+\documentclass{article}
+
+\usepackage{listings}
+\usepackage{color}
+\usepackage{courier}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{mleftright}
+\usepackage{amsfonts}
+\usepackage{hyperref}
+\usepackage{csvsimple}
+\usepackage{geometry}
+\usepackage{esdiff}
+\usepackage{array}
+
+%% comandos sacados de stackexchange
+
+% fuente: https://tex.stackexchange.com/questions/188775/how-to-type-a-particular-kind-of-unit-vector
+\newcommand{\uvec}[1]{\boldsymbol{\hat{\textbf{#1}}}}
+
+% fuente: https://tex.stackexchange.com/a/685485
+\newenvironment{system}%
+{\left\lbrace\begin{array}{@{}l@{}}}%
+	{\end{array}\right.}
+
+% fuente: https://tex.stackexchange.com/a/314612
+\newcommand{\lnn}[1]{%
+	\ln\left(#1\right)%
+}
+\newcommand{\lnb}[1]{%
+	\ln\mleft(#1\mright)%
+}
+
+
+\title{PEC VI - Física Computacional II}
+\date{07-01-2024}
+\author{Arturo Felipe Albacete Fernández}
+
+
+
+\lstset{
+	basicstyle=\footnotesize\ttfamily,
+	breaklines=true,
+	frame=tb,
+	tabsize=4,
+	columns=fixed,
+	showstringspaces=false,
+	showtabs=false,
+	keepspaces,
+	commentstyle=\color{red},
+	keywordstyle=\color{blue}
+}
+\lstset{frame=single}
+
+
+\begin{document}
+
+% titulo
+\maketitle
+\newpage
+
+% TOC
+\tableofcontents
+\newpage
+
+% intro
+\input{chapters/00-intro.tex}
+\newpage
+
+\input{chapters/01-no-relativista-newton.tex}
+\newpage
+
+\input{chapters/02-no-relativista-sistema-equiv.tex}
+\newpage
+
+\input{chapters/03-no-relativista-runge-kutta.tex}
+\newpage
+
+\input{chapters/04-no-relativista-electron.tex}
+\newpage
+
+\input{chapters/05-no-relativista-grafica.tex}
+\newpage
+
+\input{chapters/06-relativista-sistema-eq-dif.tex}
+\newpage
+
+\input{chapters/07-relativista-componentes-momento.tex}
+\newpage
+
+\input{chapters/08-relativista-sistema-momento-lineal.tex}
+\newpage
+
+\input{chapters/09-relativista-sistema-completo.tex}
+\newpage
+
+\input{chapters/10-relativista-runge-kutta.tex}
+\newpage
+
+\input{chapters/11-relativista-trayectoria.tex}
+\newpage
+
+
+% apendice
+\input{chapters/appendix.tex}
+\newpage
+
+
+
+\end{document}
