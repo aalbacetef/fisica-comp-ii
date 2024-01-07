@@ -115,3 +115,4 @@ run-pec6:
 	poetry run python -m code.pecs.pec6.ex5
 	poetry run python -m code.pecs.pec6.ex10
 	poetry run python -m code.pecs.pec6.ex11
+	poetry run python -m code.pecs.pec6.extra
