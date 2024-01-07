@@ -1,6 +1,7 @@
 import csv
 from math import sqrt
 from typing import Tuple
+from code.util import mk_3d_plot, mk_plot, unzip
 
 from matplotlib import pyplot as plt
 
@@ -23,56 +24,17 @@ def load_data(path: str) -> Tuple[Vector, list[Vector]]:
         return (t, w)
 
 
-def unzip(
-    v: list[Vector]
-) -> Tuple[Vector, Vector] | Tuple[Vector, Vector, Vector]:
-    """For a list of 2D-3D vectors, returns 2-3 lists for each component."""
-    is_2d = len(v[0]) == 2
-
-    x = [v_k[0] for v_k in v]
-    y = [v_k[1] for v_k in v]
-    if is_2d:
-        return (x, y)
-    z = [v_k[2] for v_k in v]
-
-    return (x, y, z)
-
-
-def gen_ticks(v: Vector, n: int) -> list[float]:
-    v_start = min(v)
-    h = (max(v) - v_start) / float(n)
-    return [v_start + (float(k) * h) for k in range(n)]
-
-
-def mk_plot(t: list[float], w: list[Vector], titles: list[str], path: str):
-    v = unzip(w)
-    n = len(v)
-
-    n_ticks = 5
-    _, axes = plt.subplots(n)
-
-    for k in range(n):
-        ax = axes[k]
-        v_k = v[k]
-        ax.plot(t, v_k)
-        ax.set_yticks(ticks=gen_ticks(v_k, n_ticks), minor=True)
-        ax.set_ylabel(titles[k])
-        ax.tick_params(labelsize="medium", width=3)
-        ax.grid(True, which="both")
-
-    plt.tight_layout()
-    plt.savefig(path)
-    plt.close()
-
-
 if __name__ == "__main__":
-    # leer csv ya generados
-    png_paths = [
-        "pecs/pec6/figures/rel_rx_ry_rz.png",
-        "pecs/pec6/figures/rel_vx_vy_vz.png",
-        "pecs/pec6/figures/rel_adim_vx_vy_vz.png",
-        "pecs/pec6/figures/rel_v_radial_vz.png",
+    pec_fig_path = "pecs/pec6/figures/"
+    pngs = [
+        "rel_rx_ry_rz.png",
+        "rel_vx_vy_vz.png",
+        "rel_adim_vx_vy_vz.png",
+        "rel_v_mod_rad_z.png",
+        "rel_3d_r.png",
+        "rel_3d_v.png",
     ]
+    png_paths = [pec_fig_path + p for p in pngs]
 
     t, r = load_data("pecs/pec6/data/simul_rel_r.csv")
     mk_plot(
@@ -91,7 +53,6 @@ if __name__ == "__main__":
     )
 
     v_adim = [vec_scalar(v_k, v_light) for v_k in v]
-
     mk_plot(
         t,
         v_adim,
@@ -99,11 +60,24 @@ if __name__ == "__main__":
         png_paths[2],
     )
 
-    v_radial = [sqrt((v_k[0] * v_k[0]) + (v_k[1] * v_k[1])) for v_k in v]
-    vz = [v_k[2] for v_k in v]
+    coeff = 1.0 / v_light
+    v_mod = [
+        sqrt((v_k[0] * v_k[0]) + (v_k[1] * v_k[1]) + (v_k[2] * v_k[2]))
+        for v_k in v_adim
+    ]
+    v_radial = [sqrt((v_k[0] * v_k[0]) + (v_k[1] * v_k[1])) for v_k in v_adim]
+    vz = [v_k[2] for v_k in v_adim]
+
     mk_plot(
         t,
-        [[v_radial[k], vz[k]] for k in range(len(vz))],
-        ["v_radial(t)", "v_z(t)"],
+        list(zip(v_mod, v_radial, vz)),
+        ["||v||(t)", "v_radial(t)", "v_z(t)"],
         png_paths[3],
     )
+
+    # 3d plots
+    (rx, ry, rz) = unzip(r)
+    (vx, vy, vz) = unzip(v_adim)
+
+    mk_3d_plot(rx, ry, rz, ["rx", "ry", "rz"], png_paths[4])
+    mk_3d_plot(vx, vy, vz, ["vx", "vy", "vz"], png_paths[5])

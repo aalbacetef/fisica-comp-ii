@@ -23,7 +23,7 @@ def theoretical_v_no_rel(q: float, m: float, v_0: Vector):
     w: float = q / m
     vx_0 = v_0[0]
     vy_0 = v_0[1]
-    vy_prime_0 = w * (1 - vx_0)
+    vy_prime_0 = w * (1.0 - vx_0)
     A = vy_0
     B = w / (vy_prime_0)
 
@@ -46,7 +46,7 @@ def B_rel(B_0: float, z_0: float) -> FuncVectorVector:
         [x, y, z] = r
         bx = -B_0 * x * z * coeff
         by = -B_0 * y * z * coeff
-        bz = B_0 * (1 + (coeff * z * z))
+        bz = B_0 * (1.0 + (coeff * z * z))
         return [bx, by, bz]
 
     return inner
@@ -56,7 +56,7 @@ def gamma(m: float, c: float, p_rel: Vector) -> float:
     a = m * m * c * c
     b = 1.0 / a
     sum_p = sum([p_k * p_k for p_k in p_rel])
-    return sqrt(1 + (b * sum_p))
+    return sqrt(1.0 + (b * sum_p))
 
 
 def gamma_v(c: float, v: Vector) -> float:
@@ -76,6 +76,6 @@ def f_rel(q: float, m: float, B_0: float, z_0: float) -> FuncXVector:
         coeff = q / gamma_m
 
         dp_rel = vec_scalar(curl(p_rel, B(r)), coeff)
-        return p_rel + dp_rel
+        return vec_scalar(p_rel, 1.0 / gamma_m) + dp_rel
 
     return inner

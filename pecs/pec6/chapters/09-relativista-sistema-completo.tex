@@ -17,7 +17,13 @@ El sistema completo consiste en las siguientes ecuaciones:
 	\diff{p_{rel_z}}{t} 
 \end{bmatrix} = 
 \begin{bmatrix}
-	p_{rel_x}(t) \\ \\ p_{rel_y}(t) \\ \\ p_{rel_z}(t)
+	\frac{1}{\sqrt{ 
+			m^2 + \frac{1}{c^2} \sum p_{rel_k}	
+	}} p_{rel_x}(t) \\ \\ \frac{1}{\sqrt{ 
+	m^2 + \frac{1}{c^2} \sum p_{rel_k}	
+}} p_{rel_y}(t) \\ \\ \frac{1}{\sqrt{ 
+m^2 + \frac{1}{c^2} \sum p_{rel_k}	
+}} p_{rel_z}(t)
 \\ \\
 		\frac{q}{\sqrt{ 
 			m^2 + \frac{1}{c^2} \sum p_{rel_k}	

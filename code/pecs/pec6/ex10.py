@@ -12,15 +12,6 @@ from code.pecs.pec6.data import (
 )
 
 
-def f(v_fn):
-    def inner(t, w):
-        v = w[3:]
-        dv = v_fn(t, v)
-        return v + dv
-
-    return inner
-
-
 if __name__ == "__main__":
     # define time steps
     t_0 = 0.0
