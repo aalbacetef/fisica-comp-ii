@@ -21,3 +21,8 @@ Noté lo díficil que puede llegar ser extraer una interpretación de los datos,
 
 \subsection{Discusión sobre los resultados}
 
+\subsubsection{Parte no relativista} En la parte no relativista, hicimos una simulación de un ciclotrón, donde los resultados mostraban a la partícula haciendo una trayectoria de espiral, avanzando principalmente en la dirección del eje-x. 
+
+\subsubsection{Parte relativista} Aquí, al visualizar el módulo de la velocidad, así como la velocidad radial y del componente $v_z$, se puede ver que son valores constantes. Cosa poco sorprendente pues no hay campo $E$ y el campo $B$ es no-uniforme pero estático, por ende no hace trabajo sobre la partícula.  
+
+\paragraph{Error numérico}No me he puesto a hacer cálculos para comprobar esto, pero es muy posible que los valores de los componentes y sean producto de un error numérico, dada la descomunal diferencia en el orden de magnitud entre el componente-y con los componentes x y z de la velocidad y la posición. Quizás modificando el algoritmo para usar sumas compensadas (e.g: Kahan) minimice la presencia de estos errores (aunque hay más fuentes de errores). 
