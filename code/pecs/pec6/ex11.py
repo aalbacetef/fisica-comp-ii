@@ -23,10 +23,16 @@ def load_data(path: str) -> Tuple[Vector, list[Vector]]:
         return (t, w)
 
 
-def unzip(v: list[Vector]) -> Tuple[list[float], list[float], list[float]]:
-    """For a list of 3D vectors, returns 3 lists for each component."""
+def unzip(
+    v: list[Vector]
+) -> Tuple[Vector, Vector] | Tuple[Vector, Vector, Vector]:
+    """For a list of 2D-3D vectors, returns 2-3 lists for each component."""
+    is_2d = len(v[0]) == 2
+
     x = [v_k[0] for v_k in v]
     y = [v_k[1] for v_k in v]
+    if is_2d:
+        return (x, y)
     z = [v_k[2] for v_k in v]
 
     return (x, y, z)
@@ -38,35 +44,24 @@ def gen_ticks(v: Vector, n: int) -> list[float]:
     return [v_start + (float(k) * h) for k in range(n)]
 
 
-def mk_plot(t: list[float], v: list[Vector], titles: list[str], path: str):
-    (v1, v2, v3) = unzip(v)
-
-    _, (ax1, ax2, ax3) = plt.subplots(3)
-
-    ax1.plot(t, v1)
-    ax2.plot(t, v2)
-    ax3.plot(t, v3)
+def mk_plot(t: list[float], w: list[Vector], titles: list[str], path: str):
+    v = unzip(w)
+    n = len(v)
 
     n_ticks = 5
+    _, axes = plt.subplots(n)
 
-    ax1.set_yticks(ticks=gen_ticks(v1, n_ticks), minor=True)
-    ax1.set_ylabel(titles[0])
-    ax1.tick_params(labelsize="medium", width=3)
-    ax1.grid(True, which="both")
-
-    ax2.set_yticks(ticks=gen_ticks(v2, n_ticks), minor=True)
-    ax2.set_ylabel(titles[1])
-    ax2.tick_params(labelsize="medium", width=3)
-    ax2.grid(True, which="both")
-
-    ax3.set_yticks(ticks=gen_ticks(v3, n_ticks), minor=True)
-    ax3.set_ylabel(titles[2])
-    ax3.tick_params(labelsize="medium", width=3)
-    ax3.grid(True, which="both")
+    for k in range(n):
+        ax = axes[k]
+        v_k = v[k]
+        ax.plot(t, v_k)
+        ax.set_yticks(ticks=gen_ticks(v_k, n_ticks), minor=True)
+        ax.set_ylabel(titles[k])
+        ax.tick_params(labelsize="medium", width=3)
+        ax.grid(True, which="both")
 
     plt.tight_layout()
     plt.savefig(path)
-
     plt.close()
 
 
@@ -76,6 +71,7 @@ if __name__ == "__main__":
         "pecs/pec6/figures/rel_rx_ry_rz.png",
         "pecs/pec6/figures/rel_vx_vy_vz.png",
         "pecs/pec6/figures/rel_adim_vx_vy_vz.png",
+        "pecs/pec6/figures/rel_v_radial_vz.png",
     ]
 
     t, r = load_data("pecs/pec6/data/simul_rel_r.csv")
@@ -95,6 +91,7 @@ if __name__ == "__main__":
     )
 
     v_adim = [vec_scalar(v_k, v_light) for v_k in v]
+
     mk_plot(
         t,
         v_adim,
@@ -104,6 +101,9 @@ if __name__ == "__main__":
 
     v_radial = [sqrt((v_k[0] * v_k[0]) + (v_k[1] * v_k[1])) for v_k in v]
     vz = [v_k[2] for v_k in v]
-    _, (ax1, ax2) = plt.subplots(2)
-    ax1.plot(t, v_radial)
-    ax2.plot(t, vz)
+    mk_plot(
+        t,
+        [[v_radial[k], vz[k]] for k in range(len(vz))],
+        ["v_radial(t)", "v_z(t)"],
+        png_paths[3],
+    )
