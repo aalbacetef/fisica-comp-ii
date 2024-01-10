@@ -1,0 +1,111 @@
+\section{Apéndice} 
+
+\subsection{Tipos}\label{code:types}
+
+\lstinputlisting[language=Python]{../../code/methods/types.py}
+\newpage
+
+\subsection{Util}\label{code:util}
+
+\lstinputlisting[language=Python]{../../code/util.py}
+\newpage
+
+\subsection{Datos}\label{code:data}
+
+Aquí he definido constantes y funciones utilizadas por varios ejercicios.
+
+\lstinputlisting[language=Python]{../../code/pecs/pec6/data.py}
+\newpage
+
+
+\subsection{Código linalg}
+\label{code:linalg}
+
+Las funciones nuevas son (están al final): 
+\begin{itemize}
+	\item vec\_sum
+	\item vec\_scalar
+	\item vec\_copy
+	\item curl
+\end{itemize}
+
+\lstinputlisting[language=Python]{../../code/methods/linalg.py}
+\newpage
+
+\subsection{Código RK4}
+\label{code:rk4}
+
+\lstinputlisting[language=Python]{../../code/methods/runge_kutta.py}
+\newpage
+
+\subsection{Código Ejercicio D}
+\label{code:ex4}
+
+\lstinputlisting[language=Python]{../../code/pecs/pec6/ex4.py}
+\newpage
+
+\subsection{Datos RK4 - $\vec{r}(t)$ y $\vec{v}(t)$ no relativista (primeros 50 puntos)}
+\label{data:r_v_nonrel}
+
+\begin{table}[H]
+	\centering
+	\csvreader[
+	tabular=|c|l|l|l|,
+	table head=\hline \textbf{t} & \textbf{$r_x$} & \textbf{$r_y$} & \textbf{$r_z$} \\\hline,
+	filter test=\ifnumless{\thecsvrow}{50},
+	late after last line=\\\hline,
+	]{data/simul_no_rel_r.csv}{}{\csvlinetotablerow}
+\end{table}
+
+\begin{table}[H]
+	\centering
+	\csvreader[
+	tabular=|c|l|l|l|,
+	table head=\hline \textbf{t} & \textbf{$v_x$} & \textbf{$v_y$} & \textbf{$v_z$} \\ \hline,
+	filter test=\ifnumless{\thecsvrow}{50},
+	late after last line=\\\hline,
+	]{data/simul_no_rel_v.csv}{}{\csvlinetotablerow}
+\end{table}
+
+\subsection{Código Ejercicio E}
+\label{code:ex5}
+
+\lstinputlisting[language=Python]{../../code/pecs/pec6/ex5.py}
+\newpage
+
+\subsection{Código Ejercicio ER}
+\label{code:ex10}
+
+\lstinputlisting[language=Python]{../../code/pecs/pec6/ex10.py}
+\newpage
+
+
+
+\subsection{Datos RK4 - $\vec{r}(t)$ y $\vec{v}(t)$ relativista (primeros 50 puntos)}
+\label{data:r_v_rel}
+
+\begin{table}[H]
+	\centering
+	\csvreader[
+	tabular=|c|l|l|l|,
+	table head=\hline \textbf{t} & \textbf{$r_x$} & \textbf{$r_y$} & \textbf{$r_z$} \\\hline,
+	late after last line=\\\hline,
+	]{data/simul_rel_r_capped.csv}{}{\csvlinetotablerow}
+\end{table}
+
+\begin{table}[H]
+	\centering
+	\csvreader[
+	tabular=|c|l|l|l|,
+	table head=\hline \textbf{t} & \textbf{$v_x$} & \textbf{$v_y$} & \textbf{$v_z$} \\ \hline,
+	late after last line=\\\hline,
+	]{data/simul_rel_v_capped.csv}{}{\csvlinetotablerow}
+\end{table}
+
+
+\subsection{Código Ejercicio FR}
+\label{code:ex11}
+
+\lstinputlisting[language=Python]{../../code/pecs/pec6/ex11.py}
+\newpage
+

@@ -11,6 +11,7 @@ RUN apt update && \
     make \
     texlive-latex-recommended \
     texlive-pictures \
+    texlive-lang-spanish \
     curl \
     wget \
     xz-utils 

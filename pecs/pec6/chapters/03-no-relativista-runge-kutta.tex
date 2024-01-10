@@ -1,0 +1,121 @@
+\section{Ejercicio C - Como aplicar el método RK4}
+
+\subsection{Problema}
+
+Describa detalladamente como aplicar el método de Runge-Kutta de orden cuatro al sistema de ecuaciones diferenciales ordinarias del apartado previo. En concreto, obtenga explícitamente las expresiones funcionales de los coeficientes de Runge-Kutta implicados en la resolución.
+
+\subsection{Análisis}
+
+El método de Runge-Kutta de orden 4, en un contexto vectorial, está definido para un problema de valor inicial:
+
+$$
+\diff{\vec{y}}{t} = \vec{f}(t, \vec{y})
+$$
+
+con $\vec{y}(t_0) = \vec{y_0}$. 
+
+Así que lo primero es replantear el sistema del apartado anterior: 
+
+
+\begin{align*}
+	q v_y - m \dot{v_x} &= 0 \\
+	q(1 - v_x) - m \dot{v_y} &= 0 \\
+	-m \dot{v_z} &= 0
+\end{align*}
+
+para que tenga la misma forma. Podemos reajustar y tener:
+
+\begin{align*}
+	\dot{v_x} &= \frac{q}{m} v_y \\
+	\dot{v_y} &= \frac{q}{m}(1 - v_x) \\
+	\dot{v_z} &= 0
+\end{align*}
+
+Lo cual da que:
+
+$$
+\vec{y}(t) = \vec{v}(t)
+$$
+
+\begin{equation}\label{eq:vel_deriv}
+\vec{f}(t, \vec{v}) = \frac{q}{m} \begin{bmatrix}
+\vec{v}(t) \cdot \uvec{j} \\ \\
+1-\vec{v}(t) \cdot \uvec{i}\end{bmatrix}
+\end{equation}
+
+donde he usado el producto-punto en vez de $v_x(t)$ y $v_y(t)$ para ser explícito.
+
+\newpage 
+
+\subsection{Resolución}
+
+El algoritmo de Runge-Kutta de orden 4 se trata, de forma general, en computar cuatro coeficienties $\vec{k}_i$, y usarlos para aproximar $\vec{y}$.
+
+Los 4 coeficientes son, por $i = 0 ... n$.
+
+\begin{align*}
+	\vec{k}_1 &=
+h\vec{f}(t_i, \vec{y}_i) \\
+	\vec{k}_2 &=
+h\vec{f}(
+	t_i + \frac{h}{2}, 
+	\vec{y}_i + \frac{\vec{k_1}}{2}
+) \\
+	\vec{k}_3 &=
+h\vec{f}(
+	t_i + \frac{h}{2}, 
+	\vec{y}_i + \frac{\vec{k}_2}{2}
+) \\
+	\vec{k}_4 &= 
+h\vec{f}(
+	t_i + h,
+	\vec{y}_i + \vec{k}_3
+)
+\end{align*}
+
+y en cada paso: 
+
+\begin{align*}
+	t_{i+1} &= t_i + h \\
+	\vec{y}_{i+1} &=
+\vec{y}_i + \frac{1}{6}(
+	\vec{k}_1 +
+	2\vec{k}_2 +
+	2\vec{k}_3 +
+	\vec{k}_4
+)
+\end{align*}
+
+\paragraph{Expandir el sistema} Para resolver por $\vec{r}(t)$ y $\vec{v}(t)$ a la vez, expandimos el sistema de la siguiente manera.
+
+Primero definimos un vector $\vec{w}(t) = [\vec{r}(t); \vec{v}(t)]$:
+
+\begin{equation*}
+	\vec{w}(t) = 
+\begin{bmatrix}
+	r_x(t) \\ r_y(t) \\ r_z(t) \\
+	v_x(t) \\ v_y(t) \\ v_z(t)
+\end{bmatrix} = 
+\begin{bmatrix}
+	\vec{r}(t) \\ \vec{v}(t)
+\end{bmatrix}
+\end{equation*}
+
+y su derivada es:
+
+\begin{equation*}
+	\diff{\vec{w}(t)}{t} =
+\begin{bmatrix}
+	\diff{\vec{r}(t)}{t} \\ \\
+	\diff{\vec{v}(t)}{t}
+\end{bmatrix} =
+\begin{bmatrix}
+	\vec{v}(t) \\
+	\vec{f}(t, \vec{v}(t))
+\end{bmatrix}
+\end{equation*}
+
+donde $\vec{f}(t, \vec{v}(t))$ es la que hemos definido en \eqref{eq:vel_deriv}.
+
+
+\paragraph{Código} El código que implementa el método RK4 se puede ver en \ref{code:rk4}.

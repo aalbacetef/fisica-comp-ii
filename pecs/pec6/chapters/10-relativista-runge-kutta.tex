@@ -1,0 +1,47 @@
+\section{Ejercicio ER - Sistema de ED Completo}
+
+\subsection{Problema}
+
+Utilizando un Runge-Kutta de cuarto orden con un paso temporal de $\Delta t = 10^{-12} s$ realice la simulación necesaria para describir el movimiento del electrón cuando parte de las condiciones iniciales
+
+\begin{align*}
+	\vec{r}(0) &= \gamma m c  (-1, 1, 0 )\ \text{m} \\
+	\vec{v}(0) &= \frac{2c}{3} 
+		(
+			\sin \frac{\pi}{9},
+			0,
+			\cos \frac{\pi}{9} 
+		) \ \text{m\slash s}
+\end{align*} 
+
+hasta un tiempo total $t = 200\ \text{ns}$. Indique los resultados obtenidos para todas las magnitudes (posiciones y momentos de la partícula) calculadas con el Runge-Kutta en las dos primeras iteraciones temporales.
+
+\subsection{Resolución} 
+
+El código que resuelve este ejercicio se puede ver en \ref{code:ex10}.
+
+Los resultados completos se pueden ver en el repositorio git y los primeros 50 puntos están en \ref{data:r_v_rel}. 
+
+Los valores para las dos iteraciones temporales son:
+
+\begin{table}[H]
+	\centering
+	\csvreader[
+	tabular=|c|l|l|l|,
+	table head=\hline \textbf{t} & \textbf{$r_x$} & \textbf{$r_y$} & \textbf{$r_z$} \\\hline,
+	filter test=\ifnumless{\thecsvrow}{3},
+	late after last line=\\\hline,
+	]{data/simul_rel_r_capped.csv}{}{\csvlinetotablerow}
+\end{table}
+
+\begin{table}[H]
+	\centering
+	\csvreader[
+	tabular=|c|l|l|l|,
+	table head=\hline \textbf{t} & \textbf{$v_x$} & \textbf{$v_y$} & \textbf{$v_z$} \\ \hline,
+	filter test=\ifnumless{\thecsvrow}{3},
+	late after last line=\\\hline,
+	]{data/simul_rel_v_capped.csv}{}{\csvlinetotablerow}
+\end{table}
+
+

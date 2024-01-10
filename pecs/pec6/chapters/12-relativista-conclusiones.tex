@@ -1,0 +1,28 @@
+\section{Ejercicio GR - Conclusiones}
+
+\subsection{Problema}
+
+Extraiga las conclusiones de todos los resultados del trabajo (parte no relativista y relativista).
+
+
+\subsection{Discusión sobre la realización del trabajo}
+
+Quizás lo que más me ha sorprendido de este trabajo, y que consecuentemente ha sido de gran aprendizaje, es lo potente que es combinar el método RK4 con la capacidad de procesado de datos que aporta el PC. 
+
+
+\paragraph{Posibles errores}
+En las dos partes, lo más complicado ha sido hacer a mano los cálculos para expresar el problema como un sistema de ecuaciones diferenciales de primer orden, teniendo mucho cuidado con los signos y demás detalles (e.g: el haberme equivocado y escrito un '+' donde tenía que haber un '-' significó pasarme unas horas buscando un bug cuando el error no estaba en el código...).
+
+También se me hizo muy claro la utilidad de hacer tests sobre el algoritmo, para asegurarme que la implementación del método fue correcta (e.g: para asegurarme que implementé el algoritmo RK4 de forma correcta hice algunos tests donde $\vec{y}(t) = [\sin wt, \cos wt]$, y comprobé los resultados de una simulación con los valores teóricos). Esto ayuda muchísimo cuando estás generando datos incorrectos y tienes que ver si los errores están en el algoritmo, en el sistema calculado a mano, o en el traspaso del sistema de papel a código.
+
+\paragraph{Visualización e interpretación}
+
+Noté lo díficil que puede llegar ser extraer una interpretación de los datos, pues simular es sólo una parte del problema, luego hay que visualizar e interpretar los resultados.  
+
+\subsection{Discusión sobre los resultados}
+
+\subsubsection{Parte no relativista} En la parte no relativista, hicimos una simulación de un ciclotrón, donde los resultados mostraban a la partícula haciendo una trayectoria de espiral, avanzando principalmente en la dirección del eje-x. 
+
+\subsubsection{Parte relativista} Aquí, al visualizar el módulo de la velocidad, así como la velocidad radial y del componente $v_z$, se puede ver que son valores constantes. Cosa poco sorprendente pues no hay campo $E$ y el campo $B$ es no-uniforme pero estático, por ende no hace trabajo sobre la partícula.  
+
+\paragraph{Error numérico}No me he puesto a hacer cálculos para comprobar esto, pero es muy posible que los valores de los componentes $r_y$ y $v_y$ sean producto de un error numérico, dada la descomunal diferencia en el orden de magnitud entre el componente-y con los componentes x y z de la velocidad y la posición. Quizás modificando el algoritmo para usar sumas compensadas (e.g: Kahan) minimice la presencia de estos errores (aunque hay más fuentes de errores). 

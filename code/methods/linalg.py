@@ -162,3 +162,40 @@ def solve(A: Matrix, b: Vector) -> Vector:
     y = sub_forward(L, b)
     x = sub_backward(U, y)
     return x
+
+
+def vec_sum(a: Vector, b: Vector) -> Vector:
+    """Sums two vectors. Raises an exception if lengths don't match."""
+    m = len(a)
+    n = len(b)
+    if n != m:
+        raise Exception("lengths of vectors differ: m=%d, n=%d" % (m, n))
+
+    c = [a_k for a_k in a]
+    for k in range(n):
+        c[k] += b[k]
+
+    return c
+
+
+def vec_scalar(a: Vector, k: float) -> Vector:
+    """Multiplies a vector by a scalar."""
+    return [k * a_k for a_k in a]
+
+
+def vec_copy(a: Vector) -> Vector:
+    return [a_k for a_k in a]
+
+
+def curl(v: Vector, w: Vector) -> Vector:
+    """Compute the curl of a vector with a matrix."""
+    # sanity check
+    n = 3
+    if len(v) != n or len(w) != n:
+        raise ValueError("expected a vector of length: %d" % n)
+
+    ux = (v[1] * w[2]) - (v[2] * w[1])
+    uy = (v[2] * w[0]) - (v[0] * w[2])
+    uz = (v[0] * w[1]) - (v[1] * w[0])
+
+    return [ux, uy, uz]

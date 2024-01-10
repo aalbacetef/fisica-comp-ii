@@ -1,0 +1,59 @@
+
+\section{Ejercicio B - Sistema de EDO}
+
+\subsection{Problema}
+
+Obtenga el sistema de ecuaciones diferenciales ordinarias de primer orden que es matemáticamente equivalente al sistema de ecuaciones diferenciales obtenido en el apartado anterior.
+
+\subsection{Análisis}
+
+La aceleración $\vec{a}$ también se puede escribir como:
+
+\begin{equation}
+	\vec{a}(t) = \diff{\vec{v}(t)}{t}
+\end{equation}
+
+\subsection{Resolución}
+
+Tomando el resultado anterior:
+
+$$
+	q \begin{bmatrix}
+	v_y \\
+	1 - v_x \\
+	0
+\end{bmatrix} = m \vec{a}(t)
+$$
+
+Podemos reescribir $\vec{a}(t)$ como:
+
+$$
+\begin{bmatrix} a_x \\ a_y \\ a_z \end{bmatrix} =
+\begin{bmatrix} 
+	\diff{v_x}{t} \\ \\
+	\diff{v_y}{t} \\ \\
+	\diff{v_z}{t} 
+\end{bmatrix}
+$$
+
+Esto nos da la siguiente ecuación:
+
+$$
+q \begin{bmatrix}
+	v_y \\
+	1 - v_x \\
+	0
+\end{bmatrix} = m \begin{bmatrix} 
+\diff{v_x}{t} \\ \\
+\diff{v_y}{t} \\ \\
+\diff{v_z}{t} 
+\end{bmatrix}
+$$
+
+y el sistema de ecuaciones (usaré $\dot{f}(t) = \diff{f(t)}{t}$ para ser conciso):
+\begin{align*}
+	q v_y - m \dot{v_x} &= 0 \\
+	q(1 - v_x) - m \dot{v_y} &= 0 \\
+	-m \dot{v_z} &= 0
+\end{align*}
+	
