@@ -2,6 +2,8 @@
 
 En este repo hay dos Dockerfiles. `tex.Dockerfile` se usa para generar los documentos y `python.Dockerfile` para tener un entorno de desarrollo, independiente de la máquina en la que estés.
 
+**Mirror of [gitlab.com/aalbacetef/fisica-comp-ii](gitlab.com/aalbacetef/fisica-comp-ii).**
+
 ## Entregas
 
 Para ver las entregas, ir a "Releases" 
